@@ -1,0 +1,113 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+.aeopr-list-column-child__wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.aeopr-list-column-child__wrap .aeopr-list-column-child__inner-wrap {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.aeopr-list-column-child__wrap .aeopr-list-column-child__background-image .aeopr-list-column-child__inner-wrap {
+  position: relative;
+  z-index: 4;
+}
+
+.aeopr-list-column-child__wrap.aeopr-list-column-child__align-left .aeopr-list-column-child__inner-wrap {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.aeopr-list-column-child__wrap.aeopr-list-column-child__align-right .aeopr-list-column-child__inner-wrap {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.aeopr-list-column-child__wrap .aeopr-list-column-child__overlay, .aeopr-list-column-child__wrap .aeopr-background-container {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+
+.aeopr-list-column-child__wrap .aeopr-list-column-child__overlay.has-background-overlay:before, .aeopr-list-column-child__wrap .aeopr-background-container.has-background-overlay:before {
+  z-index: 1;
+}
+
+.aeopr-list-column-child__wrap .aeopr-list-column-child__video-wrap {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  overflow: hidden;
+  z-index: 0;
+  -webkit-transition: opacity 1s;
+  -o-transition: opacity 1s;
+  transition: opacity 1s;
+}
+
+.aeopr-list-column-child__wrap .aeopr-list-column-child__video-wrap video {
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  line-height: 1;
+  border: none;
+  display: inline-block;
+  vertical-align: baseline;
+  -o-object-fit: cover;
+  object-fit: cover;
+  background-size: cover;
+}
+
+.wp-block-aeopr-list-column-childs > .editor-inner-blocks > .editor-block-list__layout > [data-type="aeopr/column"] {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: -14px;
+  margin-right: -14px;
+  min-width: 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  flex-basis: 100%;
+}
+
+@media (max-width: 976px) {
+  .aeopr-list-column-child__align-tablet-left .aeopr-list-column-child__inner-wrap {
+    margin-left: 0;
+    margin-right: auto;
+  }
+  .aeopr-list-column-child__align-tablet-right .aeopr-list-column-child__inner-wrap {
+    margin-left: auto;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .aeopr-list-column-child__align-mobile-left .aeopr-list-column-child__inner-wrap {
+    margin-left: 0;
+    margin-right: auto;
+  }
+  .aeopr-list-column-child__align-mobile-right .aeopr-list-column-child__inner-wrap {
+    margin-left: auto;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 449px) {
+  .aeopr-list-column-childs__wrap.aeopr-list-column-childs__background-image {
+    background-attachment: scroll !important;
+  }
+}

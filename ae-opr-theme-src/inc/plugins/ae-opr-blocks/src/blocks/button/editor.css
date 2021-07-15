@@ -1,0 +1,30 @@
+/***
+ * Apply Button
+ ***/
+.aeopr-button__outer-wrap .aeopr-button__link {
+  text-align: center;
+  display: block;
+  height: 100%;
+  width: 100%;
+  max-width: 250px;
+  min-height: 50px;
+  padding: 1rem 0;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: hypatia-sans-pro, Arial, sans-serif;
+}
+
+.aeopr-button__outer-wrap .aeopr-button__link:hover {
+  color: white;
+  background-color: #002856;
+}
+
+.aeopr-button__outer-wrap .aeopr-button__link:after {
+  content: '';
+  background-image: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20x%3D%220px%22%20y%3D%220px%22%20viewBox%3D%220%200%2020%2020%22%3E%3Cpath%20d%3D%22M19%2C8.8l-8.4-8.4C10.3%2C0.2%2C9.9%2C0%2C9.4%2C0C9%2C0%2C8.6%2C0.2%2C8.3%2C0.5l-1%2C1C7%2C1.8%2C6.8%2C2.1%2C6.8%2C2.6c0%2C0.5%2C0.2%2C0.8%2C0.5%2C1.2%20l3.8%2C3.8h-9C1.6%2C7.5%2C1.2%2C7.7%2C1%2C8C0.7%2C8.3%2C0.6%2C8.7%2C0.6%2C9.2v1.6c0%2C0.5%2C0.1%2C0.8%2C0.4%2C1.2s0.6%2C0.5%2C1.1%2C0.5h9l-3.8%2C3.8%20c-0.3%2C0.3-0.5%2C0.7-0.5%2C1.2c0%2C0.5%2C0.2%2C0.8%2C0.5%2C1.2l1%2C1C8.6%2C19.8%2C9%2C20%2C9.4%2C20c0.4%2C0%2C0.8-0.2%2C1.2-0.5l8.4-8.4c0.3-0.3%2C0.5-0.7%2C0.5-1.2%20C19.4%2C9.5%2C19.3%2C9.1%2C19%2C8.8z%22%20fill%3D%22%23002856%22%2F%3E%3C%2Fsvg%3E");
+  width: 13px;
+  height: 13px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  margin-left: .5rem;
+}

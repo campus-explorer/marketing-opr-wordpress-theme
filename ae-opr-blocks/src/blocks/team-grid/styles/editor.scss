@@ -1,0 +1,29 @@
+/**
+ * Editor styles for the admin
+ */
+
+ .archer-block-team-grid {
+	.archer-block-team-grid-title a {
+		 text-decoration: none;
+	}
+ }
+
+ .archer-block-team-grid-markup-settings {
+	 .components-base-control__help {
+		 margin-top: 8px;
+	 }
+ }
+
+ .block-editor__container .block-editor-block-list__block .archer-block-team-grid a {
+	 color: inherit;
+ }
+
+ 
+
+[data-type="archer/archer-team-grid"] .components-placeholder {
+	align-items: center;
+
+	.components-placeholder__fieldset {
+		width: auto;
+	}
+}

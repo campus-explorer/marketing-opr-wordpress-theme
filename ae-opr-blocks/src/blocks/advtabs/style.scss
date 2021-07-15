@@ -1,0 +1,274 @@
+/*Tabs block styles*/
+
+.aeopr-tabs-styles {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.aeopr-tabs-styles .aeopr-tabs-style {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid transparent;
+}
+
+.aeopr-tabs-styles .aeopr-tabs-style.is-toggled {
+    border: 1px solid #000;
+    background-color: #eee;
+}
+
+
+
+ul.aeopr-tabs-panel {
+    list-style-type: none !important;
+    border: none;
+    margin: 0 ;
+    padding: 0 ;
+    background: none;
+}
+
+ul.aeopr-tabs-panel:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+ul.aeopr-tabs-panel li.aeopr-tab, ul.aeopr-tabs-panel li.aeopr-tab.ui-state-default {
+    float: left;
+    margin: 0 8px 8px 0;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    position: relative;
+    background: none;
+}
+
+ul.aeopr-tabs-panel li.aeopr-tab:first-child {
+    margin-left: 0 !important;
+}
+
+ul.aeopr-tabs-panel li.aeopr-tab > a, li.aeopr-add-tab > span {
+    padding: 10px 15px;
+    display: inline-block;
+}
+
+ul.aeopr-tabs-panel li.aeopr-tab a, ul.aeopr-tabs-panel li.aeopr-tab a:focus, ul.aeopr-tabs-panel li.aeopr-tab a:hover {
+    text-decoration: none;
+    box-shadow: none;
+    outline: none;
+    display: block;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+ul.aeopr-tabs-panel li.aeopr-tab a p {
+    margin: 0;
+}
+
+ul.aeopr-tabs-panel li.aeopr-tab.ui-tabs-active,
+ul.aeopr-tabs-panel li.aeopr-tab.aeopr-tab-active {
+    background-color: #5954d6 ;
+    border-color: transparent ;
+    color: #fff ;
+}
+
+ul.aeopr-tabs-panel li.aeopr-tab.ui-tabs-active a,
+ul.aeopr-tabs-panel li.aeopr-tab.aeopr-tab-active a {
+    color: inherit !important;
+}
+
+ul.aeopr-tabs-panel li.aeopr-add-tab {
+    text-align: center;
+}
+
+ul.aeopr-tabs-panel li.aeopr-tab.aeopr-add-tab.ui-state-default {
+    border: 1px solid transparent;
+}
+
+ul.aeopr-tabs-panel li.aeopr-tab.aeopr-add-tab.ui-state-default:hover {
+    background: #ccc;
+}
+
+ul.aeopr-tabs-panel li.aeopr-add-tab span {
+    line-height: 1.8;
+    cursor: pointer;
+    font-size: 1em;
+    display: block;
+}
+
+ul.aeopr-tabs-panel li.aeopr-add-tab svg {
+    color: #e0e0e0;
+    vertical-align: sub;
+}
+
+ul.aeopr-tabs-panel li.aeopr-add-tab:hover svg {
+    color: #5954d6;
+}
+
+ul.aeopr-tabs-panel li.aeopr-add-tab:hover {
+    border-color: #5954d6;
+}
+
+span.aeopr-tab-remove {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    height: 20px;
+    color: #fff;
+    background-color: #FCB908;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    z-index: 1;
+}
+
+li.aeopr-tab:hover span.aeopr-tab-remove {
+    display: block;
+}
+
+span.aeopr-tab-remove svg {
+    display: block;
+}
+
+div.aeopr-tab-body {
+    padding: 10px 10px 10px 15px;
+    border: 1px solid #e0e0e0;
+    background: none;
+    display: none;
+}
+
+
+.aeopr-tab-body-wrapper {
+    border: 1px solid #ccc;
+    max-width: 100%;
+}
+
+.aeopr-tab-body-wrapper div.aeopr-tab-body {
+    border: none;
+}
+
+.aeopr-tab-body-wrapper .aeopr-tab-body-header {
+    cursor: pointer;
+    padding: 10px 15px;
+    display: none;
+}
+
+.aeopr-tabs-wrapper,
+.aeopr-tabs-wrapper[class *= 'aeopr-tab-vert'] {
+    display: flex;
+}
+
+.aeopr-tabs-wrapper.aeopr-tab-horz-desktop {
+    flex-direction: column;
+}
+
+.aeopr-tabs-wrapper.aeopr-tab-vert-desktop ul.aeopr-tabs-panel {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-width: 25%;
+    max-width: 25%;
+}
+
+.aeopr-tabs-wrapper.aeopr-tab-vert-desktop ul.aeopr-tabs-panel span.aeopr-tab-remove {
+    left: -8px;
+    right: unset;
+}
+
+.aeopr-tabs-wrapper.aeopr-tab-vert-desktop .aeopr-tab-body-wrapper {
+    flex-grow: 3;
+    max-width: 75%;
+}
+
+
+/* Tablet */
+@media screen and (max-width: 1023px) {
+	/* Tabs */
+	.aeopr-tabs-wrapper.aeopr-tab-horz-tablet {
+	    flex-direction: column;
+	}
+	
+	//.aeopr-tabs-wrapper.aeopr-tab-horz-tablet ul.aeopr-tabs-panel,
+	.aeopr-tabs-wrapper.aeopr-tab-horz-tablet .aeopr-tab-body-wrapper {
+	    max-width: 100%;
+	    display: block;
+	}
+	
+	.aeopr-tabs-wrapper.aeopr-tab-vert-tablet {
+	    flex-direction: row;
+	}
+	
+	.aeopr-tabs-wrapper.aeopr-tab-vert-tablet ul.aeopr-tabs-panel {
+	    display: flex;
+	    flex-direction: column;
+	    flex-grow: 1;
+	    min-width: 25%;
+	    max-width: 25%;
+	}
+	
+	.aeopr-tabs-wrapper.aeopr-tab-vert-tablet ul.aeopr-tabs-panel span.aeopr-tab-remove {
+	    left: -8px;
+	    right: unset;
+	}
+	
+	.aeopr-tabs-wrapper.aeopr-tab-vert-tablet .aeopr-tab-body-wrapper {
+	    flex-grow: 3;
+	    max-width: 75%;
+	}
+}
+
+
+/* Mobile */
+@media screen and (max-width: 767px) {
+ /* Tabs */
+    .aeopr-tabs-wrapper.aeopr-tab-horz-mobile {
+        flex-direction: column;
+    }
+
+    //.aeopr-tabs-wrapper.aeopr-tab-horz-mobile ul.aeopr-tabs-panel,
+    .aeopr-tabs-wrapper.aeopr-tab-horz-mobile .aeopr-tab-body-wrapper {
+        max-width: 100%;
+        display: block;
+    }
+
+    .aeopr-tabs-wrapper.aeopr-tab-vert-mobile {
+        flex-direction: row;
+    }
+
+    .aeopr-tabs-wrapper.aeopr-tab-vert-mobile ul.aeopr-tabs-panel {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        min-width: 25%;
+        max-width: 25%;
+    }
+
+    .aeopr-tabs-wrapper.aeopr-tab-vert-mobile ul.aeopr-tabs-panel span.aeopr-tab-remove {
+        left: -8px;
+        right: unset;
+    }
+
+    .aeopr-tabs-wrapper.aeopr-tab-vert-mobile .aeopr-tab-body-wrapper {
+        flex-grow: 3;
+        max-width: 75%;
+    }
+
+    .aeopr-tabs-wrapper.aeopr-tab-stack-mobile .aeopr-tabs-panel {
+        display: none !important;
+    }
+
+    .aeopr-tabs-wrapper.aeopr-tab-stack-mobile .aeopr-tab-body-header {
+        display: block;
+    }
+
+    .aeopr-tabs-wrapper.aeopr-tab-stack-mobile .aeopr-tab-body-wrapper {
+        max-width: 100%;
+    }
+
+    .aeopr-tabs-wrapper.aeopr-tab-stack-mobile .aeopr-tab-body-wrapper .aeopr-tab-body-container {
+        margin-bottom: 10px;
+    }
+
+    .aeopr-tabs-wrapper.aeopr-tab-stack-mobile .aeopr-tab-body-wrapper .aeopr-tab-body-container:last-child {
+        margin-bottom: 0;
+    }
+}

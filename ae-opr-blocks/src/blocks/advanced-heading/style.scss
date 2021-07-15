@@ -1,0 +1,33 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+.wp-block-aeopr-advanced-heading  {
+	padding: 0;
+	margin: 0 auto;
+
+	.aeopr-heading-text {
+		margin: 0;
+		text-align : center;
+	}
+
+	.aeopr-separator-wrap {
+		font-size: 0;
+		text-align : center;
+	}
+
+	.aeopr-separator {
+	    border-top-style: solid;
+	    display: inline-block;
+	    border-top-width: 2px;
+	    width: 5%;
+	    margin: 0px 0px 10px 0px;
+	}
+
+	.aeopr-desc-text {
+		margin: 0;
+		text-align : center;
+	}
+}

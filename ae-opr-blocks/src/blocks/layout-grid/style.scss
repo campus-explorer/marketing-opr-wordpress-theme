@@ -1,0 +1,137 @@
+/**
+ * Grid Block styles.
+ * These styles are loaded into both the editor, and the frontend.
+ */
+
+@import './constants.scss';
+
+
+/**
+ * Responsive Grid Options
+ */
+
+/* autoprefixer grid: no-autoplace */
+.wp-block-aeopr-layout-grid {
+	display: grid;
+	grid-column-gap: $grid-gutter;
+	grid-template-columns: $grid-mobile;
+
+	// Grid rules.
+	// Mobile first.
+	@for $i from 1 through 12 {
+		@for $x from 1 through 4 {
+			&.column#{ $x }-mobile-grid__start-#{ $i } > .wp-block-aeopr-layout-grid-column:nth-child(#{ $x }) {
+				grid-column-start: $i;
+			}
+		}
+	}
+
+	@for $i from 1 through 12 {
+		@for $x from 1 through 4 {
+			&.column#{ $x }-mobile-grid__span-#{ $i } > .wp-block-aeopr-layout-grid-column:nth-child(#{ $x }) {
+				grid-column-end: span $i; // Set it to span $i columns, regardless of starting position.
+			}
+		}
+	}
+
+	@for $i from 1 through 4 {
+		@for $x from 1 through 4 {
+			&.column#{ $x }-mobile-grid__row-#{ $i } > .wp-block-aeopr-layout-grid-column:nth-child(#{ $x }) {
+				grid-row-start: $i;
+			}
+		}
+	}
+
+	// Tablet grid rules.
+	@media (min-width: #{ ($break-small) }) {
+
+		grid-template-columns: $grid-tablet;
+
+		@for $i from 1 through 12 {
+			@for $x from 1 through 4 {
+				&.column#{ $x }-tablet-grid__start-#{ $i } > .wp-block-aeopr-layout-grid-column:nth-child(#{ $x }) {
+					grid-column-start: $i;
+				}
+			}
+		}
+
+		@for $i from 1 through 12 {
+			@for $x from 1 through 4 {
+				&.column#{ $x }-tablet-grid__span-#{ $i } > .wp-block-aeopr-layout-grid-column:nth-child(#{ $x }) {
+					grid-column-end: span $i; // Set it to span $i columns, regardless of starting position.
+				}
+			}
+		}
+
+		@for $i from 1 through 4 {
+			@for $x from 1 through 4 {
+				&.column#{ $x }-tablet-grid__row-#{ $i } > .wp-block-aeopr-layout-grid-column:nth-child(#{ $x }) {
+					grid-row-start: $i;
+				}
+			}
+		}
+	}
+
+
+	// Desktop grid rules.
+	@media (min-width: #{ ($break-xlarge) }) {
+		grid-template-columns: $grid-desktop;
+
+		@for $i from 1 through 12 {
+			@for $x from 1 through 4 {
+				&.column#{ $x }-desktop-grid__start-#{ $i } > .wp-block-aeopr-layout-grid-column:nth-child(#{ $x }) {
+					grid-column-start: $i;
+				}
+			}
+		}
+
+		@for $i from 1 through 12 {
+			@for $x from 1 through 4 {
+				&.column#{ $x }-desktop-grid__span-#{ $i } > .wp-block-aeopr-layout-grid-column:nth-child(#{ $x }) {
+					grid-column-end: span $i; // Set it to span $i columns, regardless of starting position.
+				}
+			}
+		}
+
+		@for $i from 1 through 4 {
+			@for $x from 1 through 4 {
+				&.column#{ $x }-desktop-grid__row-#{ $i } > .wp-block-aeopr-layout-grid-column:nth-child(#{ $x }) {
+					grid-row-start: $i;
+				}
+			}
+		}
+	}
+
+	
+
+	&.wp-block-aeopr-layout-gutter__none {
+		grid-column-gap: $grid-gutter-none;
+	}
+
+	&.wp-block-aeopr-layout-gutter__small {
+		grid-column-gap: $grid-gutter-small;
+	}
+
+	&.wp-block-aeopr-layout-gutter__medium {
+		grid-column-gap: $grid-gutter-medium;
+	}
+
+	&.wp-block-aeopr-layout-gutter__huge {
+		grid-column-gap: $grid-gutter-huge;
+	}
+
+	// Fixes an issue in Firefox where a block in the grid with 100% height causes the grid to increase in height
+	@-moz-document url-prefix() {
+		.wp-block-cover {
+			max-height: 0;
+		}
+	}
+	
+	
+}
+
+// Ensure inner blocks with deliberate overflows are still constrained to column.
+.wp-block-aeopr-layout-grid-column {
+	max-width: 100%;
+}
+

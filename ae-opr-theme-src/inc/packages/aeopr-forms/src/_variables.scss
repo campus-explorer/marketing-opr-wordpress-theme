@@ -1,0 +1,33 @@
+/***BRAND COLORS AND STYLES***/
+/****COLORS****/
+$primaryblue:#00aeef; 
+$brandblue:#006699;
+$brandmediumblue:#003478;
+$secondaryblue: #0e356f;
+$darkblue: #002856;
+$lightgray: #cccccc;
+$perulightgray: #e5e5e5;
+$shade:#efefef;
+$mediumgray:#666;
+$darkgray: #191919;
+$actiongold: #fec413;
+/***FONTS***/
+$sans-serif:myriad-pro,'Open Sans', sans-serif;
+$brandfont:'Open Sans';
+//set break points for width. 
+@mixin section-shim {
+	display:grid;
+	justify-content:center;
+	@media (max-width:1400px){
+			grid-template-columns: minmax(0,725px) calc(340px + 5%);
+	}
+	@media (min-width:1401px){
+			grid-template-columns: minmax(0,800px) calc(340px + 5%);
+	}
+}
+@mixin angle-gradient{
+	background:$brandmediumblue;
+	background: -moz-linear-gradient(78deg, $brandmediumblue -2%, $brandblue 50%, $brandmediumblue 91%);
+	background: -webkit-linear-gradient(78deg, $brandmediumblue -2%,  $brandblue 50%, $brandmediumblue 91%);
+	background: linear-gradient(78deg, $brandmediumblue -2%, $brandblue 50%, $brandmediumblue 91%);
+}

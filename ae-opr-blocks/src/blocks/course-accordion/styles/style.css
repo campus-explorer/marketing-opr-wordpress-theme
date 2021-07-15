@@ -1,0 +1,66 @@
+/**
+ * Accordion styles
+ * Loads on front end and back end
+ */
+.aeopr-course-block-accordion {
+  margin-bottom: 1.2em;
+}
+
+.aeopr-course-block-accordion .aeopr-course-accordion-title {
+  background: #f2f2f2;
+  padding: 10px 15px;
+}
+
+.aeopr-course-block-accordion .aeopr-course-accordion-title p {
+  display: inline;
+}
+
+.aeopr-course-block-accordion .aeopr-course-accordion-text {
+  padding: 10px 15px;
+}
+
+.aeopr-course-block-accordion .editor-rich-text .editor-rich-text__inline-toolbar {
+  display: block;
+  left: 40%;
+}
+
+.aeopr-course-block-accordion + .aeopr-course-block-accordion {
+  margin-top: -.6em;
+}
+
+/* Font size styles */
+@media only screen and (min-width: 600px) {
+  .aeopr-course-font-size-14 .aeopr-course-accordion-title {
+    font-size: 14px;
+  }
+  .aeopr-course-font-size-15 .aeopr-course-accordion-title {
+    font-size: 15px;
+  }
+  .aeopr-course-font-size-16 .aeopr-course-accordion-title {
+    font-size: 16px;
+  }
+  .aeopr-course-font-size-17 .aeopr-course-accordion-title {
+    font-size: 17px;
+  }
+  .aeopr-course-font-size-18 .aeopr-course-accordion-title {
+    font-size: 18px;
+  }
+  .aeopr-course-font-size-19 .aeopr-course-accordion-title {
+    font-size: 19px;
+  }
+  .aeopr-course-font-size-20 .aeopr-course-accordion-title {
+    font-size: 20px;
+  }
+  .aeopr-course-font-size-21 .aeopr-course-accordion-title {
+    font-size: 21px;
+  }
+  .aeopr-course-font-size-22 .aeopr-course-accordion-title {
+    font-size: 22px;
+  }
+  .aeopr-course-font-size-23 .aeopr-course-accordion-title {
+    font-size: 23px;
+  }
+  .aeopr-course-font-size-24 .aeopr-course-accordion-title {
+    font-size: 24px;
+  }
+}

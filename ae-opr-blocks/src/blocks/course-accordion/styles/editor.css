@@ -1,0 +1,43 @@
+/**
+ * Editor styles for the admin
+ */
+.aeopr-course-accordion .aeopr-course-accordion-title.block-editor-rich-text__editable {
+  background: #666;
+  color: white;
+  border: solid 1px #333;
+  padding: .3rem;
+  margin-bottom: 0;
+}
+
+.aeopr-course-accordion .aeopr-course-accordion-title.block-editor-rich-text__editable:after {
+  content: '+';
+  float: right;
+  color: white;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+
+.aeopr-course-accordion .aeopr-course-accordion-text {
+  border: solid 1px #999;
+  padding: 1rem;
+}
+
+.aeopr-course-accordion .aeopr-course-accordion-text .block-editor-block-list__block {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.aeopr-course-accordion .aeopr-course-accordion-text .aeopr-course-item__wrapper {
+  border: dashed 1px #ddd;
+  padding: 1.3rem 1rem;
+  margin-bottom: 5px;
+}
+
+.aeopr-course-accordion .aeopr-course-accordion-text .aeopr-course-item__wrapper p {
+  margin: 0;
+}
+
+.aeopr-course-accordion .aeopr-course-accordion-text button.components-button.block-list-appender__toggle.block-editor-button-block-appender:after {
+  content: 'Add Course to List';
+}

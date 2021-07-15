@@ -1,0 +1,40 @@
+/***
+ * Brand manager
+ ***/
+
+#opr_brand_settings_form{
+	h2{
+		border-bottom: solid 1px #ccc;
+	    margin-bottom: .5rem;
+	}
+	label {
+	    display: block;
+	    margin: 0 0 2rem;
+
+		input,textarea{
+			&.opr_settings_input {
+			    margin: 0 .5rem;
+			}
+		}
+		.remove_image_button {
+		    background: #af3127;
+		    border-color: #af3127;
+		    color: #fff;
+		    text-decoration: none;
+		    text-shadow: none;
+		    font-size: 13px;
+		    line-height: 2.15384615;
+		    min-height: 30px;
+		    margin: 1rem 0;
+		    padding: 0 10px;
+		    cursor: pointer;
+		    border-width: 1px;
+		    border-style: solid;
+		    -webkit-appearance: none;
+		    border-radius: 3px;
+		    white-space: nowrap;
+		    box-sizing: border-box;
+		    width: max-content;
+		}
+	}
+}

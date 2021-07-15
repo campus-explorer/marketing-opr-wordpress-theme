@@ -1,0 +1,184 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+.archer-icon-block__wrapper{
+
+	.archer-icon-block__wrap {
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-start;
+	}
+
+	&.wp-block-archer-icon-block .archer-icon-block__wrap a.archer-icon-block__wrapper,
+	&.wp-block-archer-icon-block .archer-icon-block__wrap a.archer-icon-block__wrapper:focus,
+	&.wp-block-archer-icon-block .archer-icon-block__wrap a.archer-icon-block__wrapper:active,
+	&.wp-block-archer-icon-block .archer-icon-block__wrap a.archer-icon-block__wrapper:visited {
+		text-decoration: none;
+	}
+
+	a.archer-button__link:focus {
+		box-shadow: none;
+	}
+
+	.archer-icon-block__wrapper > p {
+		display:none;
+	}
+
+	.archer-icon-block__wrapper {
+		padding: 0;
+	    margin-left: 5px;
+		margin-right: 5px;
+		transition: all 0.2s;
+		display: inline-flex;
+		text-align: center;
+	}
+
+	.archer-icon-block__content-wrap,
+	.archer-icon-block__source-wrap {
+		width: inherit;
+		display: inline-block;
+	}
+
+	.archer-icon-block__source-wrap {
+		display: inherit;
+		align-items: center;
+	}
+	.archer-icon-block__content-wrap {
+		color: #3a3a3a;
+		display: flex;
+		align-items: center;
+	}
+
+	.archer-icon-block__source-icon,
+	.archer-icon-block__source-icon:before {
+		font-size: 40px;
+		width: 40px;
+		height: 40px;
+	}
+
+	.archer-icon-block__source-icon svg{
+		display: block;
+	}
+
+	.archer-icon-block__source-image {
+		width: 40px;
+	}
+
+	.archer-icon-block__wrapper:first-child {
+		margin-left: 0;
+	}
+
+	.archer-icon-block__wrapper:last-child {
+		margin-right: 0;
+	}
+
+	.archer-icon-block__wrap > p {
+		display: none;
+	}
+
+	.archer-icon-block__wrapper[href="/"] {
+	    pointer-events: none;
+	    cursor: text;
+	}
+
+	&.wp-block-archer-icon-block .archer-icon-block__wrap .archer-icon-block__wrapper {
+		text-decoration: none;
+	}
+
+	.archer-icon-block__wrap .archer-icon-block__wrapper {
+		box-shadow: none;
+	}
+
+	&.archer-icon-block__icon-at-top .archer-icon-block__source-wrap{
+		align-self: flex-start;
+	}
+}
+
+.archer-icon-block__wrapper:not(.archer-icon-block__no-label) .archer-icon-block__source-wrap {
+	margin-right: 15px;
+}
+
+.archer-icon-block__no-label .archer-icon-block__label-wrap {
+    display: none;
+}
+
+/***FontIconPicker Customizations***/
+.rfip{
+	width: 100%;
+	margin: 0;
+	vertical-align: bottom;
+	.rfipbtn--default{
+	
+	&.rfipbtn{
+		min-height: 3rem;
+	    width: 3rem;
+	    padding-right: 66px;
+	}
+	.rfipbtn__button{
+		width:2rem;
+		
+	}
+	.rfipbtn__current{
+		flex:0 0 80%;
+		padding:.25rem .4rem;
+	}
+	.rfipbtn__icon{
+	 	border:none;
+	 	width:100%;
+	 	justify-content:start;
+	 	margin:0;
+	 	height: 25px;
+	}
+	 .rfipbtn__elm{
+		 	width: 100%;
+		 	justify-content:start;
+		 	svg{
+			 	height: auto;
+			    width:2rem;
+		 	}
+	 	}
+ 	.rfipbtn__del{
+	 	display:none;
+ 	}
+ 	
+ 	
+ }
+}
+ .rfipdropdown--default {
+	 .rfipicons__icon{
+		width: 24px;
+	    height: 24px;
+	    padding: 0px;
+	    margin:.2rem;
+	 	.rfipicons__ibox{
+		 	border:none;
+		 	&:hover>*{
+			 	transform:scale(1.3);
+		 	}
+		 	 &>p{
+		 	 	display:none;
+	 		}
+	 		svg{
+			 	 max-height:3.5rem;
+			 	 width:auto;
+			 	 height:100%;
+		 	 }
+	 		
+	 	}
+ }
+ 	.rfipicons__icon--selected{
+	 	 .rfipicons__ibox{
+		 	 background-color:lightblue;
+	 	 }
+	 	}
+
+	&.rfipdropdown {
+	    width: 100%;
+	    .rfipdropdown__selector{
+		    padding:.4rem;
+	    }
+	  }  
+ }

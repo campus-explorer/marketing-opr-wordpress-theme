@@ -1,0 +1,37 @@
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+.wp-block {
+  max-width: 1280px;
+}
+
+.wp-block.editor-post-title__block .editor-post-title__input {
+  font-size: 1rem;
+  font-weight: 300;
+  border-bottom: dashed 1px #ccc;
+  height: 50px !important;
+}
+
+.wp-block .wp-block-image figcaption.block-editor-rich-text__editable {
+  display: none;
+}
+
+.wp-block ul li {
+  list-style-image: url(../assets/images/check-solid.svg);
+}
+
+.wp-block[data-type="aeopr/content-area"] {
+  max-width: 785px;
+}
+
+.block-editor-block-list__layout .block-editor-block-list__block[data-align=left],
+.block-editor-block-list__layout .block-editor-block-list__block[data-align=right] {
+  float: none;
+}
+
+.editor-block-list__block[data-align=right] > .editor-block-list__block-edit, .editor-block-list__block[data-align=left] > .editor-block-list__block-edit {
+  float: none;
+}

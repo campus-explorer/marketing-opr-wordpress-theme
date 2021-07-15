@@ -1,0 +1,61 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+.aeopr-toc__block{
+	background-color:#f7f7f7;
+
+	.aeopr-toc__list-wrap{
+		ul{
+			&.aeopr-toc__list {
+				margin-left:1.2em;
+				padding-left: 0px;
+				margin-bottom:0;
+				list-style: none;
+				li {
+					margin: 0;
+				}
+			}
+			li{
+				&:empty {
+					display: none;
+				}
+				a {
+					color: inherit;
+					line-height: inherit;
+					font-size: inherit;
+				}
+			}
+		}
+	}
+	&.aeopr-toc__align-left {
+		text-align: left;
+	}
+	&.aeopr-toc__align-center {
+		text-align: center;
+	}
+
+	&.aeopr-toc__align-right {
+		text-align: right;
+	}
+
+}
+
+.aeopr-toc__scroll-top {
+
+	&.dashicons {
+		display: none;
+		position: fixed;
+		bottom: 50px;
+		right: 50px;
+		padding: 10px;
+		background: #ccd0d4;
+		cursor: pointer;
+	}
+
+	&.aeopr-toc__show-scroll {
+		display: inline-table;
+	}
+}

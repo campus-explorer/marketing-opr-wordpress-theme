@@ -1,0 +1,189 @@
+.aeopr-icon-list__outer-wrap{
+	.aeopr-icon-list__wrap {
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-start;
+	}
+}
+
+.aeopr-icon-list__outer-wrap.wp-block-aeopr-icon-list .aeopr-icon-list__wrap a.aeopr-icon-list__wrapper,
+.aeopr-icon-list__outer-wrap.wp-block-aeopr-icon-list .aeopr-icon-list__wrap a.aeopr-icon-list__wrapper:focus,
+.aeopr-icon-list__outer-wrap.wp-block-aeopr-icon-list .aeopr-icon-list__wrap a.aeopr-icon-list__wrapper:active,
+.aeopr-icon-list__outer-wrap.wp-block-aeopr-icon-list .aeopr-icon-list__wrap a.aeopr-icon-list__wrapper:visited {
+	text-decoration: none;
+}
+
+.aeopr-icon-list__outer-wrap a.aeopr-button__link:focus {
+	box-shadow: none;
+}
+
+.aeopr-icon-list__outer-wrap .aeopr-icon-list__wrapper>p {
+	display: none;
+}
+
+.aeopr-icon-list__outer-wrap .aeopr-icon-list__wrapper {
+	padding: 0;
+	margin-left: 5px;
+	margin-right: 5px;
+	transition: all 0.2s;
+	display: inline-flex;
+	text-align: center;
+}
+
+.aeopr-icon-list__outer-wrap .aeopr-icon-list__content-wrap,
+.aeopr-icon-list__outer-wrap .aeopr-icon-list__source-wrap {
+	width: inherit;
+	display: inline-block;
+}
+
+.aeopr-icon-list__outer-wrap .aeopr-icon-list__source-wrap {
+	display: inherit;
+	align-items: center;
+}
+
+.aeopr-icon-list__outer-wrap .aeopr-icon-list__content-wrap {
+	color: #3a3a3a;
+	display: flex;
+	align-items: center;
+}
+
+.aeopr-icon-list__outer-wrap .aeopr-icon-list__source-icon,
+.aeopr-icon-list__outer-wrap .aeopr-icon-list__source-icon:before {
+	font-size: 40px;
+	width: 40px;
+	height: 40px;
+}
+
+.aeopr-icon-list__outer-wrap .aeopr-icon-list__source-icon svg {
+	display: block;
+}
+
+.aeopr-icon-list__outer-wrap .aeopr-icon-list__source-image {
+	width: 40px;
+}
+
+.aeopr-icon-list__outer-wrap .aeopr-icon-list__wrapper:first-child {
+	margin-left: 0;
+}
+
+.aeopr-icon-list__outer-wrap .aeopr-icon-list__wrapper:last-child {
+	margin-right: 0;
+}
+
+.aeopr-icon-list__outer-wrap .aeopr-icon-list__wrap>p {
+	display: none;
+}
+
+.aeopr-icon-list__outer-wrap .aeopr-icon-list__wrapper[href="/"] {
+	pointer-events: none;
+	cursor: text;
+}
+
+.aeopr-icon-list__outer-wrap{
+	
+	
+	&.wp-block-aeopr-icon-list{
+		.aeopr-icon-list__wrap{
+			.aeopr-icon-list__wrapper {
+				text-decoration: none;
+			}
+		}
+	}
+	
+	
+	&.aeopr-icon-list__icon-at-top{
+		.aeopr-icon-list__source-wrap {
+			align-self: flex-start;
+		}
+	}
+
+
+	&:not(.aeopr-icon-list__no-label){
+		.aeopr-icon-list__source-wrap {
+			margin-right: 15px;
+		}
+	}
+	.aeopr-icon-list__wrap{
+		.aeopr-icon-list__wrapper {
+			box-shadow: none;
+		}
+	}
+
+///layout settings
+	&.aeopr-icon-list__layout-horizontal{
+			.block-editor-inner-blocks{
+				.block-editor-block-list__layout{
+					//display:grid;
+					//grid-auto-flow:column;
+					.aeopr-icon-list__content-wrap{
+						display:block;
+					}
+				}
+			}
+	}
+}
+
+/// --> Grid rows
+.aeopr-icon-list__outer-wrap{
+	.block-editor-inner-blocks{
+		.block-editor-block-list__layout {
+		    display: flex;
+		    flex-flow: row wrap;
+		    justify-content: center;
+		}
+	}
+}
+	
+.aeopr-icon-list__icons-{
+	&4{
+		.block-editor-block-list__layout div{
+			flex-basis:45%;
+		}
+	}
+	&5{
+		.block-editor-block-list__layout div{
+			flex-basis:30%;
+		}
+	}
+	&6{
+		.block-editor-block-list__layout div{
+			flex-basis:25%;
+		}
+	}
+
+}
+
+/*.aeopr-content-section__columns-2{
+	.aeopr-icon-list__icons-{
+		&4{
+			.block-editor-block-list__layout{
+				grid-template:1fr 1fr/ repeat(2, 1fr)
+			}
+		}
+	}
+}*/
+
+.aeopr-icon-list__no-label{
+	.aeopr-icon-list__label-wrap {
+		display: none;
+	}
+}
+
+.aeopr-icon-list__outer-wrap{
+	display: grid;
+	&.aeopr-icon-list__icons{
+		&-2 >.block-editor-inner-blocks >.block-editor-block-list__layout {
+			grid-template-rows: 1fr;
+			grid-template-columns: repeat(2,1fr);
+		}
+		&-3 >.block-editor-inner-blocks >.block-editor-block-list__layout {
+			grid-template-rows: 1fr;
+			grid-template-columns: repeat(3,1fr);
+		}
+		&-4 >.block-editor-inner-blocks >.block-editor-block-list__layout {
+			grid-template-rows: 1fr 1fr;
+			grid-template-columns: repeat(2,1fr);
+		}
+
+	}
+}

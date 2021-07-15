@@ -1,0 +1,49 @@
+/*Advanced Button block styles*/
+.components-panel__body.is-opened > .components-panel__body {
+    margin-left: -6px;
+}
+#editor .editor-block-list__block[data-type="aeopr/advancedbutton"][data-align=center] {
+    text-align: center;
+}
+span.wp-block-aeopr-advancedbutton[data-is-placeholder-visible=true] {
+    margin-top: -3px;
+}
+.wp-block-aeopr-advancedbutton.aligncenter {
+    text-align: center;
+}
+
+.wp-block-aeopr-advancedbutton .wp-block-aeopr-button_link {
+    display: inline-block;
+    text-decoration: none !important;
+    background-color: #2196f3;
+    color: #fff;
+    border-color: #fff;
+    border-radius: 50px;
+}
+
+.wp-block-aeopr-advancedbutton .wp-block-aeopr-button_link:hover {
+    background-color: #2196f3;
+    color: #fff;
+}
+
+.wp-block-aeopr-advancedbutton.is-style-outlined .wp-block-aeopr-button_link {
+    background-color: transparent !important;
+    color: #000;
+    border-radius: 50px;
+    border-color: #000;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.wp-block-aeopr-advancedbutton.is-style-squared .wp-block-aeopr-button_link {
+    border-radius: 0 !important;
+}
+
+.wp-block-aeopr-advancedbutton.is-style-squared-outline .wp-block-aeopr-button_link {
+    border-radius: 0 !important;
+    background-color: transparent !important;
+    color: #000;
+    border-color: #000;
+    border-style: solid;
+    border-width: 1px;
+}

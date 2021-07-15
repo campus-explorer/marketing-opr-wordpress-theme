@@ -1,0 +1,60 @@
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+.wp-block {
+  max-width: 1280px;
+}
+.wp-block.editor-post-title__block .editor-post-title__input {
+  font-size: 1rem;
+  font-weight: 300;
+  border-bottom: dashed 1px #ccc;
+  height: 50px !important;
+}
+.wp-block .wp-block-image figcaption.block-editor-rich-text__editable {
+  display: none;
+}
+.wp-block[data-type="aeopr/content-area"] {
+  max-width: 785px;
+}
+
+.block-editor-block-list__layout .block-editor-block-list__block[data-align=left],
+.block-editor-block-list__layout .block-editor-block-list__block[data-align=right] {
+  float: none;
+}
+
+.editor-block-list__block[data-align=right] > .editor-block-list__block-edit, .editor-block-list__block[data-align=left] > .editor-block-list__block-edit {
+  float: none;
+}
+
+.aeopr-column__background-position-center-center {
+  background-position: center center;
+}
+.aeopr-column__background-position-center-left {
+  background-position: center left;
+}
+.aeopr-column__background-position-center-right {
+  background-position: center right;
+}
+.aeopr-column__background-position-top-right {
+  background-position: top right;
+}
+.aeopr-column__background-position-top-center {
+  background-position: top center;
+}
+.aeopr-column__background-position-top-left {
+  background-position: top left;
+}
+.aeopr-column__background-position-bottom-right {
+  background-position: bottom right;
+}
+.aeopr-column__background-position-bottom-center {
+  background-position: bottom center;
+}
+.aeopr-column__background-position-bottom-left {
+  background-position: bottom left;
+}
+
+/*# sourceMappingURL=common.build.css.map */

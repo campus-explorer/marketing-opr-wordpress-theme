@@ -1,0 +1,10 @@
+{
+	"version": 3,
+	"file": "editor.css",
+	"sources": [
+		"editor.scss"
+	],
+	"sourcesContent": [],
+	"mappings": "CAMO,AAAA,SAAC,CAAU,mBAAmB,AAA7B,EAA+B,qCAAqC,CAAC,0BAA0B,CAAC,gCAAgC,AAAhG,CACnC,OAAO,CAAE,IAAK,CADsB,CAQlC,AAAA,SAAC,CAAU,mBAAmB,AAA7B,EAA+B,0BAA0B,CAAC,gCAAgC,CAAC,SAAS,AAA3F,CACb,KAAK,CAAE,IAAK,CACT,YAAY,CAAE,CAAE,CAChB,aAAa,CAAE,CAAE,CACjB,WAAW,CAAE,CAAE,CACf,YAAY,CAAE,CAAE,CALL",
+	"names": []
+}

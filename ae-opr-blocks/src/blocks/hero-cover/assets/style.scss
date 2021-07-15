@@ -1,0 +1,90 @@
+.aeopr-hero-area__wrapper{
+	position:relative;
+	min-height:230px;
+	display:flex;
+	flex-direction: column;
+	align-items:center;
+	span.hero_background {
+		    top: 0;
+		    position: absolute;
+		    bottom: 0;
+		    left: 0;
+		    right: 0;
+		    z-index:0;
+		}
+	.aeopr-hero-area__content-wrapper{
+		margin:20px 0;
+		width:100%;
+		.block-list-appender {
+		    margin-bottom: -24px;
+		}
+
+	}
+	
+}
+
+.aeopr-start-date-bar__wrapper{
+	padding:10px;
+	margin-bottom:-14px;
+	position:relative; 
+	display:grid;
+	grid-template: 1fr/auto;
+	width:100%;
+	@media(min-width:768px){
+		padding-right: 8%;
+		padding-left: 8%;	
+	}
+	.aeopr-start-date-bar__inner-wrapper {
+		margin: 0 auto;
+		
+		@media(min-width:768px){
+			grid-template: 1fr/auto 25px auto;
+			display: grid;
+			grid-column-gap: .5rem;
+		}
+		p{
+			text-align:center;
+			margin:0 auto;
+			@media(min-width:768px){
+				justify-self:center;
+				text-align: left;
+			}
+			
+			&>span {
+		    	font-weight: 700;
+		    }
+		}
+		*:first-child{
+
+			@media(min-width:768px){
+				justify-self: end;
+				align-self: center;	
+			}
+			
+		}
+		*:last-child{
+			justify-self: start;
+			align-self: center;
+		}
+		span{
+			&#start-date-block-icon{			
+				display:none;
+				@media(min-width:768px){
+					justify-self: center;
+					align-self: center;
+					width:25px;
+					height:25px;
+					display:block;
+					svg{
+						width:100%;
+						height: auto;
+						path{
+							fill:white;
+						}
+					}
+				}
+				
+			}
+		}
+	}
+}

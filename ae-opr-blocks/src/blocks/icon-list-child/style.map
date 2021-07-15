@@ -1,0 +1,10 @@
+{
+	"version": 3,
+	"file": "style.css",
+	"sources": [
+		"style.scss"
+	],
+	"sourcesContent": [],
+	"mappings": "AAAA,+BAA+B,AAAC,CAC5B,QAAQ,CAAE,QAAS,CADU,AAE3B,+BAA+B,CAAC,CAAC,AAA/B,CACA,QAAQ,CAAE,QAAS,CACnB,GAAG,CAAE,CAAE,CACP,IAAI,CAAE,CAAE,CACR,KAAK,CAAE,IAAK,CACZ,MAAM,CAAE,IAAK,CALZ,AASN,GAAG,AAAA,8BAA8B,AAAF,CAC9B,SAAS,CAAE,KAAM,CADc",
+	"names": []
+}

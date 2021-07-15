@@ -1,0 +1,27 @@
+/**
+ * Editor styles for the admin
+ */
+#wpwrap .edit-post-visual-editor a.archer-icon-block__link {
+  color: #3a3a3a;
+}
+
+#wpwrap .archer-icon-block__wrapper .archer-icon-block__label-wrap {
+  cursor: text;
+}
+
+#wpwrap .archer-icon-block__wrapper .archer-icon-block__content-wrap .archer-icon-block__source-wrap {
+  width: 60px;
+  height: 60px;
+}
+
+[data-type="archer/icon-block"] .archer-icon-block__layout-horizontal .block-editor-inner-blocks > .block-editor-block-list__layout {
+  display: flex;
+}
+
+[data-type="archer/icon-block"] .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block {
+  width: auto;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  margin-right: 0;
+}

@@ -1,0 +1,32 @@
+/*Accordion block styles*/
+#editor .aeopr-accordion-block .aeopr-accordion-header p.mce-content-body,
+#editor .aeopr-accordion-block .aeopr-accordion-body p.mce-content-body {
+    color: inherit;
+}
+
+#editor .aeopr-accordion-block {
+    padding: 15px 0;
+}
+
+.block-editor{
+	.aeopr-accordion-item{
+	margin-bottom:0!important;
+	.aeopr-accordion-body{
+		height:auto;
+		//padding-top:0;
+		//padding-bottom:0;
+		//margin-bottom:0;
+		//overflow: hidden;
+	}
+	&.opened{
+		margin-bottom:8px;
+		.aeopr-accordion-body{
+			height:auto;
+			margin-bottom:10px;
+			padding-top:10px;
+			padding-bottom:10px;
+		}
+	}
+	
+}
+}

@@ -1,0 +1,173 @@
+/**
+ * Editor styles for the admin
+ */
+.editor-styles-wrapper{
+	.aeopr-hero-area-block__wrapper{
+		position:relative;
+		height:230px;
+		background-color:#10212E;
+		display:flex;
+		flex-direction: column;
+		align-items:center;
+		span.hero_background {
+			    top: 0;
+			    position: absolute;
+			    bottom: 0;
+			    left: 0;
+			    right: 0;
+			    opacity: .5;
+			}
+		.aeopr-hero-area__content-wrapper{
+			margin:20px 0;
+			h1,h3{
+				margin:2px 0;
+				color:white;
+			}
+			.block-list-appender {
+			    margin-bottom: -24px;
+			}
+
+		}
+		/// --> Date Bar
+		.aeopr-start-date-bar__wrapper{
+			background-color:#525151;
+			padding:10px;
+			margin-bottom:-14px;
+			position:relative; 
+			display:grid;
+			grid-template: 1fr/auto;
+			width:100%;
+			@media(min-width:768px){
+				padding-right: 8%;
+				padding-left: 8%;	
+			}
+			.aeopr-start-date-bar__inner-wrapper {
+				margin: 0 auto;
+				
+				@media(min-width:768px){
+					grid-template: 1fr/auto 25px auto;
+					display: grid;
+					grid-column-gap: .5rem;
+				}
+				p{
+					text-align:center;
+					margin:0 auto;
+					@media(min-width:768px){
+						justify-self:center;
+						text-align: left;
+					}
+					
+					&>span {
+				    	font-weight: 700;
+				    }
+				}
+				&>*{
+				color: white;
+				}
+				*:first-child{
+		
+					@media(min-width:768px){
+						justify-self: end;
+						align-self: center;	
+					}
+					
+				}
+				*:last-child{
+					justify-self: start;
+					align-self: center;
+				}
+				span{
+					&#start-date-block-icon{			
+						display:none;
+						@media(min-width:768px){
+							justify-self: center;
+							align-self: center;
+							width:25px;
+							height:25px;
+							display:block;
+							svg{
+								width:100%;
+								height: auto;
+								path{
+									fill:white;
+								}
+							}
+						}
+						
+					}
+				}
+			}
+		}
+		
+		
+		
+		
+		/*.aeopr-start-date-bar__wrapper{
+			background-color:#525151;
+			display:grid;
+			grid-template: 1fr/42% 16% 42%;
+			padding:10px;
+			position:relative;
+			width:100%;
+			
+			&>*{
+				color: white;
+				margin-top:0;
+				margin-bottom: 0;
+			}
+			*:first-child{
+				justify-self: end;
+				align-self: center;
+			}
+			*:last-child{
+				justify-self: start;
+				align-self: center;
+			}
+			span{
+				&#start-date-block-icon{
+					justify-self: center;
+					align-self: center;
+					width:25px;
+					height:25px;
+					display:block;
+					svg{
+						width:100%;
+						height: auto;
+						path{
+							fill:white;
+						}
+					}
+				}
+			}
+		}*/
+		color:white;
+		text-align: center;
+		
+		
+	}
+	
+
+}
+
+
+[data-type="archer/icon-block"]{
+		.archer-icon-block__layout-horizontal{
+		.block-editor-inner-blocks{
+			 &> .block-editor-block-list__layout {
+			 	display: flex;
+			 }
+		}
+	}
+	.block-editor-inner-blocks{
+
+		&> .block-editor-block-list__layout{
+			 &> .wp-block {
+				width: auto;
+			    padding-left: 0;
+			    padding-right: 0;
+			    margin-left: 0;
+			    margin-right: 0;
+			}
+		}
+	}
+}

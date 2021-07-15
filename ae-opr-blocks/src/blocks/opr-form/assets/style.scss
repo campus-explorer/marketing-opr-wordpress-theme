@@ -1,0 +1,107 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+.aeopr-form__wrapper{
+	min-height: 150px;
+	.aeopr-form__wrap {
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-start;
+	}
+
+	&.wp-aeopr-form .aeopr-form__wrap a.aeopr-form__wrapper,
+	&.wp-aeopr-form .aeopr-form__wrap a.aeopr-form__wrapper:focus,
+	&.wp-aeopr-form .aeopr-form__wrap a.aeopr-form__wrapper:active,
+	&.wp-aeopr-form .aeopr-form__wrap a.aeopr-form__wrapper:visited {
+		text-decoration: none;
+	}
+
+	a.archer-button__link:focus {
+		box-shadow: none;
+	}
+
+	.aeopr-form__wrapper > p {
+		display:none;
+	}
+
+	.aeopr-form__wrapper {
+		padding: 0;
+	    margin-left: 5px;
+		margin-right: 5px;
+		transition: all 0.2s;
+		display: inline-flex;
+		text-align: center;
+	}
+
+	.aeopr-form__content-wrap,
+	.aeopr-form__source-wrap {
+		width: inherit;
+		display: inline;
+	}
+
+	.aeopr-form__source-wrap {
+		display: inherit;
+		align-items: center;
+	}
+	.aeopr-form__content-wrap {
+		color: #3a3a3a;
+		display: flex;
+		align-items: center;
+	}
+
+	.aeopr-form__source-icon,
+	.aeopr-form__source-icon:before {
+		font-size: 40px;
+		width: 40px;
+		height: 40px;
+	}
+
+	.aeopr-form__source-icon svg{
+		display: block;
+	}
+
+	.aeopr-form__source-image {
+		width: 40px;
+	}
+
+	.aeopr-form__wrapper:first-child {
+		margin-left: 0;
+	}
+
+	.aeopr-form__wrapper:last-child {
+		margin-right: 0;
+	}
+
+	.aeopr-form__wrap > p {
+		display: none;
+	}
+
+	.aeopr-form__wrapper[href="/"] {
+	    pointer-events: none;
+	    cursor: text;
+	}
+
+	&.wp-aeopr-form .aeopr-form__wrap .aeopr-form__wrapper {
+		text-decoration: none;
+	}
+
+	.aeopr-form__wrap .aeopr-form__wrapper {
+		box-shadow: none;
+	}
+
+	&.aeopr-form__icon-at-top .aeopr-form__source-wrap{
+		align-self: flex-start;
+	}
+}
+
+.aeopr-form__wrapper:not(.aeopr-form__no-label) .aeopr-form__source-wrap {
+	margin-right: 15px;
+}
+
+.aeopr-form__no-label .aeopr-form__label-wrap {
+    display: none;
+}
+

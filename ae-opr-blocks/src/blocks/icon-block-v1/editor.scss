@@ -1,0 +1,46 @@
+.wp-block-aeopr-icon-block{
+	position: relative;
+	&>a{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+	.aeopr-icon-block__content-wrap{
+		text-align:center;
+		.aeopr-icon-block__source-icon{
+			margin:0 auto;
+			svg{
+				width:auto!important;
+				height:100%!important;
+			}
+		}
+		.aeopr-icon-block__label-wrap{
+			text-align:center;
+			font-size:14px;
+			font-family: Arial, sans-serif;
+			font-weight:600;
+			line-height:1.2;
+			margin-top:.5rem;
+		}
+	}
+///fonticonpicker customizations
+.rfipdropdown.rfipdropdown--open{
+	width:250px;
+	left:0!important;
+	.rfipicons{
+		.rfipicons__selector{
+			.rfipicons__icon{
+				width:40px;
+				height:40px;
+				svg{
+					width:40px;
+					height:40px;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,84 @@
+body{
+font-family: myriad-pro,Arial,sans-serif;
+}
+.mega-menu-wrap{
+display:none;
+}
+.site-wrapper>header{
+background-color:#069;height:50px;display: grid;grid-template: 50px/150px 1fr;position: fixed;top: 0;left: 0;width: 100%;align-items: center;z-index: 30000;grid-auto-flow: column;
+}
+.site-wrapper>header .aeopr-header__actionbar{display:none;}
+.content-area {
+    top: 50px;
+    left: 0;
+    right: 0;
+    position: fixed;
+    height: 100vh;
+}
+.content-area main .aeopr-hero-area__wrapper {
+    background-color: #10212E;
+    border-bottom: solid #efefef 30px;
+    margin-bottom: 1rem;
+    min-height: 300px;
+position: relative;
+display: grid;
+grid-template: 1fr/1fr;
+}
+.content-area main .aeopr-start-date-bar__wrapper{display:none}
+.content-area main .aeopr-hero-area__wrapper .aeopr-hero-area__content-wrapper {
+z-index: 2;
+position: relative;
+text-align: center;
+align-self: center;
+justify-self: center;
+color: #fff;
+font-family: myriad-pro,Arial,sans-serif;
+font-weight: 400;
+}
+.content-area main .aeopr-hero-area__wrapper .aeopr-hero-area__content-wrapper h1{
+font-weight:600;
+font-size:2.25rem;
+}
+.content-area main .aeopr-hero-area__wrapper .aeopr-hero-area__content-wrapper h3{
+font-weight:500;
+font-size:1.1rem;
+}
+.content-area main .aeopr-hero-area__wrapper .hero_background{
+background-image:none;
+background-color:#ccc;
+display:none;
+}
+main .aeopr-content__outer-wrap .aeopr-content-section__wrap.tmp-20yr-badge{display:none;}
+@media(max-width:768px){
+  main .aeopr-content__outer-wrap{ display:none;}
+}
+
+.content-area main .aeopr-toc__block .aeopr-toc__list-wrap ul.aeopr-toc__list {
+    margin-left: 0;
+    height: auto;
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin-top: 0;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.aeopr-visual-links__outer-wrap{
+display:none;
+}
+
+@media(min-width:1024px){
+	.content-area main .aeopr-hero-area__wrapper .aeopr-hero-area__content-wrapper {
+		margin-bottom: 20px;
+		margin-top: 54px;
+		margin-right: calc(385px + 15%);
+		margin-left: 15%;
+	}
+	.content-area main .aeopr-toc__block .aeopr-toc__list-wrap {
+		padding-right: calc(385px + 15%);
+		padding-left: 15%;
+	}
+
+}

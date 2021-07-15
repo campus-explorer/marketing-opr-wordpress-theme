@@ -1,0 +1,178 @@
+{
+  "name": "ae-wp-blocks",
+  "version": "1.0.4",
+  "description": "Wordpress Custom Archer Blocks",
+  "main": "index.js",
+  "scripts": {
+    "start": "wp-scripts start  ",
+    "build": "wp-scripts build",
+    "deploy": "grunt",
+    "package": "wp dist-archive"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.10.5",
+    "@dr-kobros/react-webfont-loader": "^8.0.0",
+    "@fonticonpicker/react-fonticonpicker": "^1.2.0",
+    "@wordpress/api-fetch": "^2.2.8",
+    "@wordpress/block-editor": "^4.3.1",
+    "@wordpress/blocks": "^6.20.1",
+    "@wordpress/compose": "^3.0.1",
+    "@wordpress/icons": "^2.4.0",
+    "@wordpress/server-side-render": "^1.18.1",
+    "acorn": ">=5.7.4",
+    "autoprefixer": "^9.8.5",
+    "axios": "^0.21.0",
+    "chalk": "^2.4.2",
+    "child_process": "^1.0.2",
+    "classnames": "^2.2.6",
+    "fast-average-color": "^6.0.2",
+    "filesize": "^3.5.11",
+    "gzip-size": "^4.1.0",
+    "https": "^1.0.0",
+    "immutability-helper": "^3.0.1",
+    "jquery": "^3.5.0",
+    "kind-of": ">=6.0.3",
+    "lodash": "^4.17.11",
+    "lodash.assign": "^4.2.0",
+    "mem": ">=4.0.0",
+    "memize": "^1.0.5",
+    "memoize": "^0.1.1",
+    "minimist": ">=1.2.3",
+    "net": "^1.0.2",
+    "ora": "^1.3.0",
+    "pls": "^0.1.3",
+    "postcss-loader": "^2.1.6",
+    "prop-types": "^15.7.2",
+    "querystringify": "^2.1.1",
+    "raw-loader": "^0.5.1",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "react-dropdown-select": "^4.5.0",
+    "react-inlinesvg": "^1.2.0",
+    "react-scripts": "^3.3.0",
+    "react-select": "^3.1.0",
+    "react-select-search": "^2.0.6",
+    "react-transition-group": "^4.3.0",
+    "sass-extract": "^2.1.0",
+    "sass-extract-js": "^0.4.0",
+    "sass-extract-loader": "^1.1.0",
+    "slick-carousel": "^1.8.1",
+    "striptags": "^3.1.1",
+    "svg-inline-loader": "^0.8.2",
+    "svg-react-loader": "^0.4.6",
+    "update-notifier": "^2.3.0"
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions",
+    "last 2 iOS versions",
+    "last 1 Android version",
+    "last 1 ChromeAndroid version",
+    "ie 11"
+  ],
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "modules": false
+        }
+      ],
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      "@babel/plugin-syntax-jsx",
+      "babel-plugin-transform-class-properties",
+      [
+        "@babel/plugin-proposal-object-rest-spread",
+        {
+          "useBuiltIns": true
+        }
+      ],
+      [
+        "@babel/plugin-transform-react-jsx",
+        {
+          "pragma": "wp.element.createElement"
+        }
+      ],
+      [
+        "@babel/plugin-transform-runtime",
+        {
+          "corejs": 3
+        }
+      ],
+      "babel-plugin-syntax-async-functions"
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.1",
+    "@babel/plugin-proposal-object-rest-spread": "^7.11.0",
+    "@babel/plugin-syntax-jsx": "^7.10.4",
+    "@babel/plugin-transform-react-jsx": "^7.10.4",
+    "@babel/plugin-transform-runtime": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-react": "^7.10.4",
+    "@babel/runtime-corejs3": "7.9.2",
+    "@babel/traverse": "7.9.0",
+    "@wordpress/scripts": "^12.1.1",
+    "@wordpress/url": "2.15.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "25.3.0",
+    "babel-loader": "8.1.0",
+    "babel-plugin-emotion": "10.0.33",
+    "babel-plugin-inline-json-import": "0.3.2",
+    "babel-plugin-lodash": "^3.3.4",
+    "babel-plugin-require-context-hook": "1.0.0",
+    "babel-plugin-syntax-async-functions": "^6.13.0",
+    "babel-plugin-transform-class-properties": "6.24.1",
+    "cross-env": "^5.1.5",
+    "css-loader": "^2.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-wordpress": "^2.0.0",
+    "eslint-plugin-jest": "^21.27.2",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-wordpress": "^0.1.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^6.0.0",
+    "friendly-errors-webpack-plugin": "^1.7.0",
+    "grunt": "^1.1.0",
+    "grunt-bumpup": "^0.6.3",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-compress": "^1.4.3",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-sass": "^2.0.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-text-replace": "^0.4.0",
+    "grunt-wp-i18n": "^1.0.3",
+    "grunt-wp-readme-to-markdown": "^2.0.1",
+    "html-react-parser": "^0.13.0",
+    "memize": "^1.0.5",
+    "mini-css-extract-plugin": "^0.5.0",
+    "moment": "^2.29.1",
+    "node-sass": "^4.14.1",
+    "react-masonry-component": "^6.2.1",
+    "react-masonry-css": "^1.0.12",
+    "react-memoize": "^1.0.1",
+    "sass-loader": "^9.0.3",
+    "style-loader": "^1.2.1",
+    "ttf-loader": "^1.0.2",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webfontloader": "^1.6.28",
+    "webpack": "^4.10.2",
+    "webpack-cli": "^3.0.2",
+    "webpack-config": "^7.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/archer-jsonderman/ae-wp-blocks.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/archer-jsonderman/ae-wp-blocks/issues"
+  },
+  "homepage": "https://github.com/archer-jsonderman/ae-wp-blocks#readme"
+}

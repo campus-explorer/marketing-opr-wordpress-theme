@@ -1,0 +1,40 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+.aeopr-block-video-testimonial{
+	margin:3rem auto 0;
+	article{
+		&.video-item{
+			display:flex;
+			flex-direction: column;
+			justify-content: center;
+			&.is-aligned-{
+				&center{
+					.aeopr-block-video-testimonial-text{
+						.aeopr-block-video-testimonial-header, 
+						.aeopr-block-video-testimonial-description{
+							text-align:center;
+						}
+					}
+				}
+				&left{
+					.aeopr-block-video-testimonial-text{
+						.aeopr-block-video-testimonial-header, 
+						.aeopr-block-video-testimonial-description{
+							text-align:left;
+						}
+					}
+				}
+			}
+			.aeopr-block-video-testimonial-image{
+				text-align:center;
+			}
+			.aeopr-block-video-testimonial-more-link{
+				text-align: right;
+			}
+		}
+	}
+}

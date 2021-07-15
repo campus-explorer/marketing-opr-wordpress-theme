@@ -1,0 +1,90 @@
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+.wp-block{
+	max-width:1280px;
+	&.editor-post-title__block{
+		.editor-post-title__input {
+		    font-size: 1rem;
+		    font-weight: 300;
+		    border-bottom: dashed 1px #ccc;
+		    height: 50px!important;
+		}
+	}
+	.wp-block-image{
+		figcaption{
+			&.block-editor-rich-text__editable{
+				display:none;
+			}
+		}
+	}
+	ul{
+		li{
+			//list-style-image:url(../assets/images/check-solid.svg)
+		}
+	}
+	&[data-type="aeopr/content-area"]{
+		max-width:785px;
+	}
+}
+
+//correct data-align wordpress height issue
+.block-editor-block-list__layout{
+	.block-editor-block-list__block[data-align=left],
+	.block-editor-block-list__block[data-align=right]{
+		float:none;
+	}
+}
+.editor-block-list__block{
+	&[data-align=right],&[data-align=left]{
+		 &> .editor-block-list__block-edit {
+		 	float: none;
+		 }
+	}
+}
+
+/// --> Background positioning classes
+.aeopr-column__background-position-{
+	&center{
+		&-center{
+			background-position: center center;	
+		}
+		&-left{
+			background-position: center left;	
+		}
+	
+	
+		&-right{
+			background-position: center right;	
+		}
+	}
+	&top{
+		&-right{
+			background-position: top right;
+		}
+		&-center{
+			background-position: top center;	
+		}
+		&-left{
+			background-position: top left;	
+		}	
+	}
+	
+	
+	&bottom{
+		&-right{
+			background-position: bottom right ;	
+		}
+		&-center{
+			background-position: bottom center;	
+		}
+		&-left{
+			background-position: bottom left;	
+		}
+	}
+
+	
+}

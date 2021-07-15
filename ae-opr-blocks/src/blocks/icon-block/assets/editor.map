@@ -1,0 +1,10 @@
+{
+	"version": 3,
+	"file": "editor.css",
+	"sources": [
+		"editor.scss"
+	],
+	"sourcesContent": [],
+	"mappings": "AAEa,aAAa,AAAA,mBAAmB,AAAb,CAC/B,KAAK,CAAC,KAAM,CACZ,IAAI,CAAC,CAAC,CAAA,UAAU,CAFgB,AAK9B,aAAa,AAAA,mBAAmB,CAAC,UAAU,CAAC,oBAAoB,CAAC,gBAAgB,AAAjE,CACf,KAAK,CAAC,IAAK,CACX,MAAM,CAAC,IAAK,CAFI,AAGhB,aAAa,AAAA,mBAAmB,CAAC,UAAU,CAAC,oBAAoB,CAAC,gBAAgB,CAAC,GAAG,AAAlF,CACF,KAAK,CAAC,IAAK,CACX,MAAM,CAAC,IAAK,CAFT",
+	"names": []
+}

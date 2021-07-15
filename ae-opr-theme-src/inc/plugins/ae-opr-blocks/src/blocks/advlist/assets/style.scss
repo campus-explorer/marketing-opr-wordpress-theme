@@ -1,0 +1,30 @@
+ul.aeopr-list{
+	li{
+		&:before{
+				font-family:"Font Awesome 5 Free";
+				font-weight:900;
+				margin: 0 7px 0 0;
+				padding: 2px;
+				margin-left: -22px;
+				font-size: 66%!important;
+				display: inline-block;
+				vertical-align: middle;
+				height: auto;
+				line-height: .1!important;
+			}
+		
+	}
+	&-check{
+		list-style:none;
+		li:before{
+			content:'\f00c';
+		}
+	}
+	&-circle{
+		list-style:none;
+		li:before{
+			content:'\f111';
+		}
+	}
+	
+}

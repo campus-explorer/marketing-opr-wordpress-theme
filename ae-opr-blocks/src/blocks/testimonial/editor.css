@@ -1,0 +1,51 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+.aeopr-testimonial__outer-wrap.aeopr-content-section__wrap:before {
+  content: none;
+}
+
+.aeopr-tm__author-name,
+.aeopr-tm__author-name.block-editor-rich-text__editable {
+  margin: 10px auto 5px;
+  font-size: 12px;
+  line-height: 1em;
+  font-style: italic;
+}
+
+.aeopr-tm__desc,
+.aeopr-tm__desc.block-editor-rich-text__editable {
+  margin: 0px auto 15px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.aeopr-tm__company,
+.aeopr-tm__company.block-editor-rich-text__editable {
+  margin-bottom: 5px;
+  font-size: 12px;
+  line-height: 1em;
+  font-style: italic;
+}
+
+.aeopr-tm__imgicon-style-circle .aeopr-tm__image img {
+  border-radius: 100%;
+}
+
+.aeopr-tm__imgicon-style-square .aeopr-tm__image img {
+  border-radius: 0%;
+}
+
+.aeopr-tm__image img {
+  display: inline-block;
+  box-sizing: content-box;
+}
+
+.aeopr-tm__icon {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+}

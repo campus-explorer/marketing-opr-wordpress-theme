@@ -1,0 +1,106 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+.aeopr-visual-links__outer-wrap {
+
+	/*.aeopr-visual-links__wrap {
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-start;
+	}*/
+
+	&.wp-block-aeopr-visual-links .aeopr-visual-links__wrap a.aeopr-visual-links__wrapper,
+	&.wp-block-aeopr-visual-links .aeopr-visual-links__wrap a.aeopr-visual-links__wrapper:focus,
+	&.wp-block-aeopr-visual-links .aeopr-visual-links__wrap a.aeopr-visual-links__wrapper:active,
+	&.wp-block-aeopr-visual-links .aeopr-visual-links__wrap a.aeopr-visual-links__wrapper:visited {
+		text-decoration: none;
+	}
+
+	a.aeopr-button__link:focus {
+		box-shadow: none;
+	}
+
+	.aeopr-visual-links__wrapper > p {
+		display:none;
+	}
+
+	.aeopr-visual-links__wrapper {
+		padding: 0;
+	    margin-left: 5px;
+		margin-right: 5px;
+		transition: all 0.2s;
+		display: inline-flex;
+		text-align: center;
+	}
+
+	.aeopr-visual-links__content-wrap,
+	.aeopr-visual-links__source-wrap {
+		width: inherit;
+		display: inline-block;
+	}
+
+	.aeopr-visual-links__source-wrap {
+		display: inherit;
+		align-items: center;
+	}
+	.aeopr-visual-links__content-wrap {
+		color: #3a3a3a;
+		display: flex;
+		align-items: center;
+	}
+
+	.aeopr-visual-links__source-icon,
+	.aeopr-visual-links__source-icon:before {
+		font-size: 40px;
+		width: 40px;
+		height: 40px;
+	}
+
+	.aeopr-visual-links__source-icon svg{
+		display: block;
+	}
+
+	.aeopr-visual-links__source-image {
+		width: 40px;
+	}
+
+	.aeopr-visual-links__wrapper:first-child {
+		margin-left: 0;
+	}
+
+	.aeopr-visual-links__wrapper:last-child {
+		margin-right: 0;
+	}
+
+	.aeopr-visual-links__wrap > p {
+		display: none;
+	}
+
+	.aeopr-visual-links__wrapper[href="/"] {
+	    pointer-events: none;
+	    cursor: text;
+	}
+
+	&.wp-block-aeopr-visual-links .aeopr-visual-links__wrap .aeopr-visual-links__wrapper {
+		text-decoration: none;
+	}
+
+	.aeopr-visual-links__wrap .aeopr-visual-links__wrapper {
+		box-shadow: none;
+	}
+
+	&.aeopr-visual-links__icon-at-top .aeopr-visual-links__source-wrap{
+		align-self: flex-start;
+	}
+}
+
+.aeopr-visual-links__outer-wrap:not(.aeopr-visual-links__no-label) .aeopr-visual-links__source-wrap {
+	margin-right: 15px;
+}
+
+.aeopr-visual-links__no-label .aeopr-visual-links__label-wrap {
+    display: none;
+}

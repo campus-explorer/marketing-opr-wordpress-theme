@@ -1,0 +1,18 @@
+
+///fonticonpicker customizations
+.rfipdropdown.rfipdropdown--open{
+	width:250px;
+	left:0!important;
+	.rfipicons{
+		.rfipicons__selector{
+			.rfipicons__icon{
+				width:40px;
+				height:40px;
+				svg{
+					width:40px;
+					height:40px;
+				}
+			}
+		}
+	}
+}

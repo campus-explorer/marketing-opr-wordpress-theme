@@ -1,0 +1,48 @@
+/**
+ * Editor styles for the admin
+ */
+
+#wpwrap{
+	.edit-post-visual-editor{
+		a{
+			&.aeopr-form__link {
+				color: #3a3a3a;
+			}
+		}
+	}
+	.aeopr-form__wrapper{
+		.aeopr-form__label-wrap {
+			cursor: text;
+		}
+	}
+	.aeopr-form__wrapper{
+		.aeopr-form__content-wrap{
+			.aeopr-form__source-wrap{
+				width:60px;
+				height:60px;
+			}
+		}
+	}
+
+}
+
+[data-type="aeopr/rfi-form"]{
+		.aeopr-form__layout-horizontal{
+		.block-editor-inner-blocks{
+			 &> .block-editor-block-list__layout {
+			 	display: flex;
+			 }
+		}
+	}
+	.block-editor-inner-blocks{
+		&> .block-editor-block-list__layout{
+			 &> .wp-block {
+				width: auto;
+			    padding-left: 0;
+			    padding-right: 0;
+			    margin-left: 0;
+			    margin-right: 0;
+			}
+		}
+	}
+}

@@ -1,0 +1,10 @@
+{
+	"version": 3,
+	"file": "editor.css",
+	"sources": [
+		"editor.scss"
+	],
+	"sourcesContent": [],
+	"mappings": "AAOE,OAAO,AAAA,WAAW,AAAP,CACX,UAAU,CAAC,IAAK,CADJ",
+	"names": []
+}

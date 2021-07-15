@@ -1,0 +1,74 @@
+/**
+ * Editor styles for the admin
+ */
+
+#wpwrap{
+	.edit-post-visual-editor{
+		a{
+			&.archer-icon-block__link {
+				color: #3a3a3a;
+			}
+		}
+	}
+	.archer-icon-block__wrapper{
+		.archer-icon-block__label-wrap {
+			cursor: text;
+		}
+	}
+	.archer-icon-block__wrapper{
+		.archer-icon-block__content-wrap{
+			.archer-icon-block__source-wrap{
+				width:60px;
+				height:60px;
+			}
+		}
+	}
+
+}
+
+[data-type="archer/icon-block"]{
+		.archer-icon-block__layout-horizontal{
+		.block-editor-inner-blocks{
+			 &> .block-editor-block-list__layout {
+			 	display: flex;
+			 }
+		}
+	}
+	.block-editor-inner-blocks{
+		&> .block-editor-block-list__layout{
+			 &> .wp-block {
+				width: auto;
+			    padding-left: 0;
+			    padding-right: 0;
+			    margin-left: 0;
+			    margin-right: 0;
+			}
+		}
+	}
+}
+/// --> select-search ui
+
+
+.react-dropdown-select-input{
+	display:none;
+}
+.dropdown-search{
+	padding: .8rem;
+	h3 {
+    	margin-bottom: 10px;
+	}
+	.dropdown-item-list{
+		margin-top:10px;
+		
+		span{
+			&.dropdown-item{
+				padding: .2rem .5rem;
+			    display: block;
+			    border-bottom: solid 1px #e5e5e5;
+				&:hover {
+				    background: #00aeef9c;
+				}
+			}
+		}
+	}
+}

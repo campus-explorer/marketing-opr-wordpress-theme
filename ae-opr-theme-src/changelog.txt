@@ -1,0 +1,17 @@
+Version 1.2.1 Jun 30, 2021
+- removed peru specific menu code from site.js that was resetting mobile utility links to #
+- removed mega menu css from site.scss that was specific to Peru. It was moved to Peru's child theme
+- removed filter from functions.php the added utility links to mobile menu. This is specific to Peru and was moved to child theme.
+
+Version 1.2.2 Jul 01, 2021
+- Lead Form: validate agencyTracking is in place for peru (not in place on landing page)
+- Lead Form: validate cookie reader is in place for peru (updated partner site form)
+
+Version 1.2.3 Jul 08, 2021
+- Lead Form 2.1 release:
+	- optimize baseline css to remove Peru Specific effects
+	- Update submitting sequence - add filter blur to form css and remove overlay bg color
+	- Decouple aeoprSettings in formgql; promote to wrapper
+	
+- AEOPR Blocks
+	- add classes for SEO tracking to program grid blocks (ae-opr-blocks/src/blocks/programs-grid/index.php)

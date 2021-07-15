@@ -1,0 +1,301 @@
+/**
+ * BLOCK: Start & Apply Date Banmer
+ * this is used in the Hero Cover blcok exclusively
+ */
+
+import classnames from "classnames"
+import AEOPR_Block_Icons from "Dist/blocks/controls/block-icons"
+import "../assets/style.scss"
+import "../assets/editor.scss"
+
+
+const { __ } = wp.i18n
+
+const {
+	registerBlockType
+} = wp.blocks
+
+const {
+	InnerBlocks,
+	InspectorControls,
+	RichText,
+	ColorPalette,
+	PanelColorSettings,
+	getColorObjectByColorValue,
+	getColorClassName,
+	withColors,
+} = wp.blockEditor
+
+
+const { createHigherOrderComponent } = wp.compose;
+const { Fragment, Component } = wp.element;
+
+const { 
+	PanelBody,
+	SelectControl,
+	Button,
+	ButtonGroup,
+	TextControl,
+	ToggleControl,
+	TabPanel,
+	G, 
+	Path, 
+	SVG,
+	RangeControl,
+	BaseControl,
+	Dashicon,
+	DateTimePicker
+	} = wp.components;
+
+const { addFilter } = wp.hooks;
+
+const {compose} = wp.compose;
+
+class StartApplyBanner extends Component{
+
+	
+	render (){
+		
+		function GetFormattedDate(date) {
+			if(!date)return;
+		    var todayTime = new Date(date.split(','));
+		    var month = (todayTime.getMonth() + 1);
+		    var day = (todayTime.getDate()+1);
+		    var year = (todayTime.getFullYear());
+		    return month + "/" + day + "/" + year;
+		}			
+	
+		const { 
+			attributes, 
+			setAttributes, 
+			backgroundColor,
+			setBackgroundColor,
+			customBackgroundColor,
+			textColor,
+			setTextColor,
+			customTextColor,
+			iconColor,
+			setIconColor,
+			customIconColor } = this.props
+			
+		const {
+			className,
+			label,
+			showDate,
+			classDate,
+			applyDate
+			} = attributes
+			
+			
+		const wrapperstyle = {
+			backgroundColor: customBackgroundColor || backgroundColor.color,
+			color: customTextColor || textColor.color,
+		};
+		
+		const iconstyle = {
+			fill: customIconColor || iconColor.color
+		}
+
+		if(undefined == classDate)setAttributes({classDate: aeopr_settings.start_date});
+		if(undefined == applyDate)setAttributes({applyDate: aeopr_settings.apply_date});
+		
+		return (
+			<>
+				<InspectorControls>
+					<PanelBody title={ __( "Background" ) } initialOpen={ true }>
+						<PanelColorSettings
+							title={ __( 'Background Color', 'aeopr' ) }
+							initialOpen
+							colorSettings={ [
+								{
+									value: backgroundColor.color,
+									onChange: setBackgroundColor,
+									label: __( 'Background', 'aeopr' ),
+								},
+							] }
+						/>
+						<PanelColorSettings
+							title={ __( 'Text Color', 'aeopr' ) }
+							initialOpen
+							colorSettings={ [
+								{
+									value: textColor.color,
+									onChange: setTextColor,
+									label: __( 'Text', 'aeopr' ),
+								},
+							] }
+						/>
+						<PanelColorSettings
+							title={ __( 'Icon Color', 'aeopr' ) }
+							initialOpen
+							colorSettings={ [
+								{
+									value: iconColor.color,
+									onChange: setIconColor,
+									label: __( 'Icon', 'aeopr' ),
+								},
+							] }
+						/>
+
+						
+					</PanelBody>	
+					
+				</InspectorControls>
+				<div
+					className={ classnames(
+						"aeopr-start-date-bar__wrapper",
+						{
+							[ backgroundColor.class ]: backgroundColor.class,
+							[ textColor.class ]: textColor.class,
+						}
+
+						
+					) }
+					style={wrapperstyle}
+				>
+					<div 
+						className="aeopr-start-date-bar__inner-wrapper">
+						<p id="apply-by-block">Apply By: <span>{GetFormattedDate(applyDate)}</span></p>
+						<span id="start-date-block-icon">
+							<SVG 
+								xmlns="http://www.w3.org/2000/svg" 
+								viewBox="0 0 450 450">
+								<Path 
+								style={iconstyle} d="M337.07,221.23h29.65a12.18,12.18,0,0,0,12.16-12.16V179.43a12.17,12.17,0,0,0-12.16-12.16H337.07a12.17,12.17,0,0,0-12.15,12.16v29.64a12.17,12.17,0,0,0,12.15,12.16Zm.3-41.51h29.05v29.05H337.37Zm-.3,120.36h29.65a12.17,12.17,0,0,0,12.16-12.15V258.29a12.17,12.17,0,0,0-12.16-12.16H337.07a12.17,12.17,0,0,0-12.15,12.16v29.64a12.16,12.16,0,0,0,12.15,12.15Zm.3-41.5h29.05v29.05H337.37Zm-84.9-37.35h29.65a12.17,12.17,0,0,0,12.16-12.16V179.43a12.17,12.17,0,0,0-12.16-12.16H252.47a12.17,12.17,0,0,0-12.15,12.16v29.64a12.17,12.17,0,0,0,12.15,12.16Zm.3-41.51h29.06v29.05H252.77ZM112.93,321.29H83.28a12.17,12.17,0,0,0-12.16,12.15v29.65a12.17,12.17,0,0,0,12.16,12.15h29.65a12.16,12.16,0,0,0,12.15-12.15V333.44a12.16,12.16,0,0,0-12.15-12.15Zm-.3,41.5h-29V333.74h29.05Zm.3-195.52H83.28a12.17,12.17,0,0,0-12.16,12.16v29.64a12.18,12.18,0,0,0,12.16,12.16h29.65a12.17,12.17,0,0,0,12.15-12.16V179.43a12.17,12.17,0,0,0-12.15-12.16Zm-.3,41.5h-29V179.72h29.05Zm139.84,89.47h29.65a12.17,12.17,0,0,0,12.16-12.16V256.43a12.17,12.17,0,0,0-12.16-12.15H252.47a12.16,12.16,0,0,0-12.15,12.15v29.65a12.17,12.17,0,0,0,12.15,12.16Zm.3-41.51h29.06v29.06H252.77ZM385.06,41H358.44V31.43A19,19,0,0,0,339.51,12.5h-2.86a19,19,0,0,0-18.93,18.93V41H132.28V31.43A19,19,0,0,0,113.35,12.5h-2.86A19,19,0,0,0,91.56,31.43V41H64.94A31.21,31.21,0,0,0,33.77,72.12V406.37A31.17,31.17,0,0,0,64.9,437.5H385.1a31.17,31.17,0,0,0,31.13-31.13V72.12A31.2,31.2,0,0,0,385.06,41Zm-54.89-9.52A6.49,6.49,0,0,1,336.65,25h2.86A6.49,6.49,0,0,1,346,31.43V41H330.17ZM104,31.43A6.49,6.49,0,0,1,110.49,25h2.86a6.49,6.49,0,0,1,6.48,6.48V41H104ZM403.78,406.37a18.7,18.7,0,0,1-18.68,18.68H64.9a18.7,18.7,0,0,1-18.68-18.68v0a31,31,0,0,0,18.72,6.27H317.35a31,31,0,0,0,22-9.13l64.39-64.39ZM333,392.21a26.45,26.45,0,0,0,.76-6.27V344.38A14.22,14.22,0,0,1,348,330.17h41.55a26.47,26.47,0,0,0,6.28-.76Zm70.74-262.29H138.51a6.23,6.23,0,1,0,0,12.45H403.78V303.5a14.23,14.23,0,0,1-14.22,14.21H348a26.7,26.7,0,0,0-26.66,26.67v41.56a14.24,14.24,0,0,1-14.22,14.21H64.94a18.74,18.74,0,0,1-18.72-18.72V142.37h67.39a6.23,6.23,0,0,0,0-12.45H46.22V72.12A18.74,18.74,0,0,1,64.94,53.4H91.56V71.71a19,19,0,0,0,18.93,18.93,6.23,6.23,0,0,0,0-12.45A6.49,6.49,0,0,1,104,71.71V53.4H317.72V71.71a19,19,0,0,0,18.93,18.93,6.23,6.23,0,1,0,0-12.45,6.49,6.49,0,0,1-6.48-6.48V53.4h54.89a18.74,18.74,0,0,1,18.72,18.72ZM112.93,244.28H83.28a12.17,12.17,0,0,0-12.16,12.15v29.65a12.18,12.18,0,0,0,12.16,12.16h29.65a12.17,12.17,0,0,0,12.15-12.16V256.43a12.16,12.16,0,0,0-12.15-12.15Zm-.3,41.51h-29V256.73h29.05Zm55.25-64.56h29.65a12.17,12.17,0,0,0,12.15-12.16V179.43a12.17,12.17,0,0,0-12.15-12.16H167.88a12.17,12.17,0,0,0-12.16,12.16v29.64a12.17,12.17,0,0,0,12.16,12.16Zm.29-41.51h29.06v29.05H168.17Zm84.59,183.07a6.22,6.22,0,0,0-12.44.3,12.16,12.16,0,0,0,12.15,12.15h29.65a12.17,12.17,0,0,0,12.16-12.15V333.44a12.17,12.17,0,0,0-12.16-12.15H252.47a12.16,12.16,0,0,0-12.15,12.15V342a6.23,6.23,0,1,0,12.45,0v-8.25h29.06v29.05Zm-84.88-64.55h29.65a12.17,12.17,0,0,0,12.15-12.16V256.43a12.16,12.16,0,0,0-12.15-12.15H167.88a12.17,12.17,0,0,0-12.16,12.15v29.65a12.17,12.17,0,0,0,12.16,12.16Zm.29-41.51h29.06v29.06H168.17Zm-.29,118.51h29.65a12.16,12.16,0,0,0,12.15-12.15V333.44a12.16,12.16,0,0,0-12.15-12.15H167.88a12.17,12.17,0,0,0-12.16,12.15v29.65a12.17,12.17,0,0,0,12.16,12.15Zm.29-41.5h29.06v29.05H168.17Zm0,0"/>
+								</SVG>
+							</span>
+						<p id="classes-start-block">Classes Start: <span>{GetFormattedDate(classDate)}</span></p>
+					</div>
+					
+						
+				</div>
+			</>
+		)
+	}
+}
+
+registerBlockType( "aeopr/startapply-banner", {
+	title:"Start & Apply Date Banner",
+	description: "",
+	icon: AEOPR_Block_Icons.columns,
+	category: 'aeopr',
+	parent: [ 'aeopr/hero-cover' ],
+	keywords: [
+		__( "columns" ),
+		__( "rows" ),
+	],
+	attributes:{
+	
+		align: {
+			type: "string",
+			default: "center"
+		},
+		vAlign: {
+			type: "string",
+			default: "top"
+		},
+		backgroundColor: {
+			type: "string",
+			default:'central-palette-1'
+		},
+		customBackgroundColor: {
+			type: 'string',
+		},
+		textColor: {
+			type: "string",
+			default:'central-palette-1'
+		},
+		customTextColor: {
+			type: 'string',
+		},		
+
+		iconColor: {
+			type: "string",
+			default:'central-palette-1'
+		},
+		customIconColor: {
+			type: 'string',
+		},		
+		
+	    classDate:{
+		    type:'string',
+		    
+	    },
+	    applyDate:{
+		    type:'string',
+	    }
+
+	},
+	edit:	compose(
+		withColors('backgroundColor'),
+		withColors('textColor'),
+		withColors('iconColor'))(StartApplyBanner),
+	save:	function( props ) {
+		const { attributes, className } = props
+		//const { backgroundImage } = props.attributes;
+		const {
+			label,
+			backgroundColor,
+			customBackgroundColor,
+			textColor,
+			customTextColor,
+			iconColor,
+			customIconColor,
+			showDate,
+			classDate,
+			applyDate
+		} = attributes
+		
+		function GetFormattedDate(date) {
+				if(!date)return;
+			    var todayTime = new Date(date.split(','));
+			    var month = (todayTime.getMonth() + 1);
+			    var day = (todayTime .getDate() + 1);
+			    var year = (todayTime .getFullYear());
+			    return month + "/" + day + "/" + year;
+			}
+		const backgroundClass = getColorClassName(
+			'background-color',
+			backgroundColor
+		);
+		const textClass = getColorClassName(
+			'color',
+			textColor
+		);
+		
+		const wrapperstyle = {
+			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+			color: textClass ? undefined : customTextColor
+		};
+		const iconstyle = {
+			fill: iconColor ? iconColor : customIconColor
+		};
+		
+			
+		return (					
+			<div
+				className={ classnames(
+					"aeopr-start-date-bar__wrapper",
+					backgroundClass,
+					textClass,
+					
+				) }
+				style={wrapperstyle}
+			>
+					<div className="aeopr-start-date-bar__inner-wrapper">
+						<p id="apply-by-block" className={textClass}>Apply By: <span>{GetFormattedDate(applyDate)}</span></p>
+						<span id="start-date-block-icon">
+							<SVG 
+									xmlns="http://www.w3.org/2000/svg" 
+									viewBox="0 0 450 450">
+									<Path style={iconstyle} d="M337.07,221.23h29.65a12.18,12.18,0,0,0,12.16-12.16V179.43a12.17,12.17,0,0,0-12.16-12.16H337.07a12.17,12.17,0,0,0-12.15,12.16v29.64a12.17,12.17,0,0,0,12.15,12.16Zm.3-41.51h29.05v29.05H337.37Zm-.3,120.36h29.65a12.17,12.17,0,0,0,12.16-12.15V258.29a12.17,12.17,0,0,0-12.16-12.16H337.07a12.17,12.17,0,0,0-12.15,12.16v29.64a12.16,12.16,0,0,0,12.15,12.15Zm.3-41.5h29.05v29.05H337.37Zm-84.9-37.35h29.65a12.17,12.17,0,0,0,12.16-12.16V179.43a12.17,12.17,0,0,0-12.16-12.16H252.47a12.17,12.17,0,0,0-12.15,12.16v29.64a12.17,12.17,0,0,0,12.15,12.16Zm.3-41.51h29.06v29.05H252.77ZM112.93,321.29H83.28a12.17,12.17,0,0,0-12.16,12.15v29.65a12.17,12.17,0,0,0,12.16,12.15h29.65a12.16,12.16,0,0,0,12.15-12.15V333.44a12.16,12.16,0,0,0-12.15-12.15Zm-.3,41.5h-29V333.74h29.05Zm.3-195.52H83.28a12.17,12.17,0,0,0-12.16,12.16v29.64a12.18,12.18,0,0,0,12.16,12.16h29.65a12.17,12.17,0,0,0,12.15-12.16V179.43a12.17,12.17,0,0,0-12.15-12.16Zm-.3,41.5h-29V179.72h29.05Zm139.84,89.47h29.65a12.17,12.17,0,0,0,12.16-12.16V256.43a12.17,12.17,0,0,0-12.16-12.15H252.47a12.16,12.16,0,0,0-12.15,12.15v29.65a12.17,12.17,0,0,0,12.15,12.16Zm.3-41.51h29.06v29.06H252.77ZM385.06,41H358.44V31.43A19,19,0,0,0,339.51,12.5h-2.86a19,19,0,0,0-18.93,18.93V41H132.28V31.43A19,19,0,0,0,113.35,12.5h-2.86A19,19,0,0,0,91.56,31.43V41H64.94A31.21,31.21,0,0,0,33.77,72.12V406.37A31.17,31.17,0,0,0,64.9,437.5H385.1a31.17,31.17,0,0,0,31.13-31.13V72.12A31.2,31.2,0,0,0,385.06,41Zm-54.89-9.52A6.49,6.49,0,0,1,336.65,25h2.86A6.49,6.49,0,0,1,346,31.43V41H330.17ZM104,31.43A6.49,6.49,0,0,1,110.49,25h2.86a6.49,6.49,0,0,1,6.48,6.48V41H104ZM403.78,406.37a18.7,18.7,0,0,1-18.68,18.68H64.9a18.7,18.7,0,0,1-18.68-18.68v0a31,31,0,0,0,18.72,6.27H317.35a31,31,0,0,0,22-9.13l64.39-64.39ZM333,392.21a26.45,26.45,0,0,0,.76-6.27V344.38A14.22,14.22,0,0,1,348,330.17h41.55a26.47,26.47,0,0,0,6.28-.76Zm70.74-262.29H138.51a6.23,6.23,0,1,0,0,12.45H403.78V303.5a14.23,14.23,0,0,1-14.22,14.21H348a26.7,26.7,0,0,0-26.66,26.67v41.56a14.24,14.24,0,0,1-14.22,14.21H64.94a18.74,18.74,0,0,1-18.72-18.72V142.37h67.39a6.23,6.23,0,0,0,0-12.45H46.22V72.12A18.74,18.74,0,0,1,64.94,53.4H91.56V71.71a19,19,0,0,0,18.93,18.93,6.23,6.23,0,0,0,0-12.45A6.49,6.49,0,0,1,104,71.71V53.4H317.72V71.71a19,19,0,0,0,18.93,18.93,6.23,6.23,0,1,0,0-12.45,6.49,6.49,0,0,1-6.48-6.48V53.4h54.89a18.74,18.74,0,0,1,18.72,18.72ZM112.93,244.28H83.28a12.17,12.17,0,0,0-12.16,12.15v29.65a12.18,12.18,0,0,0,12.16,12.16h29.65a12.17,12.17,0,0,0,12.15-12.16V256.43a12.16,12.16,0,0,0-12.15-12.15Zm-.3,41.51h-29V256.73h29.05Zm55.25-64.56h29.65a12.17,12.17,0,0,0,12.15-12.16V179.43a12.17,12.17,0,0,0-12.15-12.16H167.88a12.17,12.17,0,0,0-12.16,12.16v29.64a12.17,12.17,0,0,0,12.16,12.16Zm.29-41.51h29.06v29.05H168.17Zm84.59,183.07a6.22,6.22,0,0,0-12.44.3,12.16,12.16,0,0,0,12.15,12.15h29.65a12.17,12.17,0,0,0,12.16-12.15V333.44a12.17,12.17,0,0,0-12.16-12.15H252.47a12.16,12.16,0,0,0-12.15,12.15V342a6.23,6.23,0,1,0,12.45,0v-8.25h29.06v29.05Zm-84.88-64.55h29.65a12.17,12.17,0,0,0,12.15-12.16V256.43a12.16,12.16,0,0,0-12.15-12.15H167.88a12.17,12.17,0,0,0-12.16,12.15v29.65a12.17,12.17,0,0,0,12.16,12.16Zm.29-41.51h29.06v29.06H168.17Zm-.29,118.51h29.65a12.16,12.16,0,0,0,12.15-12.15V333.44a12.16,12.16,0,0,0-12.15-12.15H167.88a12.17,12.17,0,0,0-12.16,12.15v29.65a12.17,12.17,0,0,0,12.16,12.15Zm.29-41.5h29.06v29.05H168.17Zm0,0"/>
+									</SVG>
+							</span>
+						<p id="classes-start-block">Classes Start: <span>{GetFormattedDate(classDate)}</span></p>
+					</div>
+						
+				</div>
+			)
+	}
+
+} )

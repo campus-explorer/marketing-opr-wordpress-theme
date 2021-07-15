@@ -1,0 +1,13 @@
+/***
+ * Brand manager
+ ***/
+#brand-color-palette .brand-palette-item {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 10px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  border: solid 1px grey;
+  background: lightgray;
+}

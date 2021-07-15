@@ -1,0 +1,71 @@
+/**
+ * Editor styles for the admin
+ */
+.editor-styles-wrapper .aeopr-hero-area-block__wrapper {
+  position: relative;
+  background-color: #003366;
+  color: white;
+  text-align: center;
+}
+
+.editor-styles-wrapper .aeopr-hero-area-block__wrapper span.hero_background {
+  top: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: .5;
+}
+
+.editor-styles-wrapper h1, .editor-styles-wrapper h3 {
+  color: white;
+}
+
+[data-type="archer/icon-block"] .archer-icon-block__layout-horizontal .block-editor-inner-blocks > .block-editor-block-list__layout {
+  display: flex;
+}
+
+[data-type="archer/icon-block"] .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block {
+  width: auto;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.aeopr-start-date-bar__wrapper {
+  background-color: #525151;
+  display: grid;
+  grid-template: 1fr/42% 16% 42%;
+}
+
+.aeopr-start-date-bar__wrapper > * {
+  color: white;
+}
+
+.aeopr-start-date-bar__wrapper *:first-child {
+  justify-self: end;
+  align-self: center;
+}
+
+.aeopr-start-date-bar__wrapper *:last-child {
+  justify-self: start;
+  align-self: center;
+}
+
+.aeopr-start-date-bar__wrapper span#start-date-block-icon {
+  justify-self: center;
+  align-self: center;
+  width: 25px;
+  height: 25px;
+  display: block;
+}
+
+.aeopr-start-date-bar__wrapper span#start-date-block-icon svg {
+  width: 100%;
+  height: auto;
+}
+
+.aeopr-start-date-bar__wrapper span#start-date-block-icon svg path {
+  fill: white;
+}
