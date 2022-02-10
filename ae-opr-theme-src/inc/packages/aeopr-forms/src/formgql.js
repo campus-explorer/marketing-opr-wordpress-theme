@@ -364,15 +364,15 @@ export default function FormPanel(props){
 								"lastname="+encodeURIComponent(values.lastName),
 								"email="+encodeURIComponent(values.email),
 								"phone="+encodeURIComponent(values.phoneNumber),
-								"ocid="+encodeURIComponent(programCode),
+								"ocid="+encodeURIComponent(finalProgramCode),
 								"leadsource="+encodeURIComponent(sourceCode),
 								"captureurl="+encodeURIComponent(location.href),
 								"tcpaconsent="+true,
-								"segment="+encodeURIComponent(programCode),///Legacy parameter
+								"segment="+encodeURIComponent(finalProgramCode),///Legacy parameter
 								searchString		
 								
 							]:'';
-							
+
 						/// -->> Google CrossDomain Tracking for handoff to redirect
 						/// -->> Add these query parameters to any links that point to a separate tracked domain
 						let crossDomainTrackingParams='';
