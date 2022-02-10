@@ -182,7 +182,6 @@ function aeopr_blocks_enqueue_editor_assets(){
         'pluginUrl' => plugins_url('', AEOPR_FILE),
     ));
 
-    
 
     wp_enqueue_style(
         'aeopr-blocks-editor',

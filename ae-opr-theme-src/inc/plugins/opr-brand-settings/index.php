@@ -123,8 +123,12 @@ function opr_brand_settings_page_cb() {
 	
 	$Info = $NewForm->buildForm($NewForm,
 		array(
+		'College Code' => esc_attr( strtoupper(get_option('opr_brand_settings_college_code'))),
+		'Partner Code' => esc_attr( strtoupper(get_option('opr_brand_settings_partner_code'))),
+		'Campus Code' => esc_attr( strtoupper(get_option('opr_brand_settings_campus_code'))),
 		'Phone Number'=>esc_attr( get_option('opr_brand_settings_phone_number')),
 		'RFI Redirect' => esc_attr( get_option('opr_brand_settings_rfi_redirect')),
+		'Apply Redirect' => esc_attr( get_option('opr_brand_settings_apply_redirect')),
 		'GTM Id' => esc_attr( get_option('opr_brand_settings_gtm_id')),
 		'Programs Start Date'=>array(
 			'val'=>$startDate,
@@ -156,9 +160,13 @@ function opr_brand_settings_page_cb() {
 function opr_register_brand_style_settings() { // whitelist options
 	register_setting( 'opr_brand_settings', 'opr_brand_settings_favicon' );
 	register_setting( 'opr_brand_settings', 'opr_brand_settings_logo' );
+	register_setting( 'opr_brand_settings', 'opr_brand_settings_partner_code' );
+	register_setting( 'opr_brand_settings', 'opr_brand_settings_college_code' );
+	register_setting( 'opr_brand_settings', 'opr_brand_settings_campus_code' );
 	register_setting( 'opr_brand_settings', 'opr_brand_settings_phone_number' );
 	register_setting( 'opr_brand_settings', 'opr_brand_settings_rfi_redirect');
-	register_setting('opr_brand_settings', 'opr_brand_settings_gtm_id');
+	register_setting( 'opr_brand_settings', 'opr_brand_settings_apply_redirect');
+	register_setting( 'opr_brand_settings', 'opr_brand_settings_gtm_id');
 	register_setting( 'opr_brand_settings', 'opr_brand_settings_programs_start_date' );
 	register_setting( 'opr_brand_settings', 'opr_brand_settings_programs_apply_date' );
 	register_setting( 'opr_brand_settings', 'opr_brand_settings_icon_library');

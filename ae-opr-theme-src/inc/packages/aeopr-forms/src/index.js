@@ -1,24 +1,31 @@
-const { render, useState } = wp.element;
+import { useState } from 'react';
+
 import { 
 	ApolloProvider,
 	ApolloClient, 
 	InMemoryCache 
 } from '@apollo/client';
 
-import LeadFormPanel from './formgql'
+import LeadFormPanel from './formgql';
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
+
+import {version } from "../package.json"
 
 
-const version = "2_1";
 const crmConfig = {	
 	midpoint:aeopr_settings.ash_midpoint,
 	apiKey:aeopr_settings.apiKey,
 	redirect:aeopr_settings.redirect,
 	applyRedirect:aeopr_settings.applyredirect,
-	clientPrefix: aeopr_settings.clientPrefix,
+	clientPrefix: aeopr_settings.partnerCode,
 	campusCode: aeopr_settings.campusCode,
+	collegeCode: aeopr_settings.collegeCode,
 	partnerCode: aeopr_settings.partnerCode,
 	clientCTPA: aeopr_settings.clientCTPA,
-	defaultPhone: aeopr_settings.defaultPhone
+	defaultPhone: aeopr_settings.defaultPhone,
+	programsList: aeopr_settings.programsList
+	
   
 }
 const { 
@@ -28,11 +35,14 @@ const {
 	applyRedirect,
 	clientPrefix,
 	campusCode,
+	collegeCode,
 	partnerCode,
 	clientCTPA,
-	defaultPhone
+	defaultPhone,
+	programsList
 	} = crmConfig;
 
+//console.log(crmConfig);
 
 const gqlClient = new ApolloClient({
 	uri: midpoint,
@@ -42,7 +52,6 @@ const gqlClient = new ApolloClient({
  
 
 const LeadFormApp = (props) => {
-		console.log(props);
 /// -->> set parent state for pulling the program code from root	
 	const [rootProgramCode, setRootProgramCode] = useState();
 
@@ -66,23 +75,32 @@ const LeadFormApp = (props) => {
 		
 /// -->> this inits the observer		
 		if(observeTarget)observer.observe(observeTarget, options);
-		
+
+/// -->> set the cookie for the applynow preselect when the user navigates away
+		if(props.programFocus)cookies.set('aeoprSelectedProgram', campusCode+'--'+props.programFocus, {path:'/'});	
 /// -->> we will pass the state item as programSelect prop to the form function
+
+/// -->> check for campusCode override
+		const campusToggle =false;//Array.isArray(campusCode);
+
+
+
 		
 	return(
 		<ApolloProvider client={gqlClient} >
 			<LeadFormPanel 
 				midpoint={midpoint}
 				origin={"Website_RFI"}
-				redirect={props.redirect}
-				programFocus = {props.programFocus}
+				programFocus = {rootProgramCode||props.programFocus}
 				formtype={"crm"}
 				formFocus={'rfiForm'}
 				programSelect = {rootProgramCode||props.programFocus}
-				programList={aeopr_settings?.programsList}
+				programList={programsList}
 				clientPrefix = {clientPrefix}
 				partnerCode={partnerCode}
 				campusCode = {campusCode}
+				campusToggle = {campusToggle}
+				collegeCode={collegeCode}
 				clientCTPA = {clientCTPA}
 				defaultPhone = {defaultPhone}
 				cid={props.cid}
@@ -100,15 +118,17 @@ const leadFormArea = document.querySelectorAll('.aeopr-leadform[data-has-form="1
 if(leadFormArea){
 	for(let area of leadFormArea){
 		const customRedirect = area.getAttribute('data-redirect');
-		const redirectUrl= customRedirect||redirect;
+		let redirectTarget= customRedirect||redirect;
+		/// -->> check for query flag on redirect url
+		const redirectUrl = (redirectTarget && redirectTarget.indexOf('?')<0)?redirectTarget+'?':redirectTarget+'&';
 		const programFocus = area.getAttribute('data-program-focus')||null;/// setting on the container from the WP page
 		const container = area.getAttribute('id')||'main';
 		const displayType = area.getAttribute('data-type')||'inline';
+
 		
-		console.log(programFocus, container);
-		render(
+		ReactDOM.render(
 		 	<LeadFormApp 
-		 		redirect={redirect}
+		 		redirect={redirectUrl}
 		 		programFocus = {programFocus}
 		 		displayType = {displayType}
 		 		cid={container}
@@ -122,18 +142,22 @@ if(leadFormArea){
  };
 
 const ApplyFormApp = () => {
-
+	const selectedProgram = cookies.get('aeoprSelectedProgram');
+	/// -->> check for query flag on redirect url
+	let redirectApplyUrl = (applyRedirect && applyRedirect.indexOf('?')<0)?applyRedirect+'?':applyRedirect+'&';
 	return(
 			<ApolloProvider client={gqlClient} >
 				<LeadFormPanel
 					midpoint={midpoint}
-					redirect={applyRedirect}
+					redirect={redirectApplyUrl}
 					origin={'Apply Now Short Form'}
 					formtype={"crm"}
 					formFocus={'applyForm'}
-					//programSelect = {rootProgramCode||''} pull this from query
+					programSelect = {selectedProgram||null}
+					programList={programsList}
 					clientPrefix = {clientPrefix}
 					campusCode = {campusCode}
+					collegeCode={collegeCode}
 					partnerCode={partnerCode}
 					clientCTPA = {clientCTPA}
 					defaultPhone = {defaultPhone}
@@ -143,4 +167,4 @@ const ApplyFormApp = () => {
 			</ApolloProvider>
 	)
 }
-if(document.getElementById(`applyform-area`)) render(<ApplyFormApp/>, document.getElementById(`applyform-area`));
+if(document.getElementById(`applyform-area`)) ReactDOM.render(<ApplyFormApp/>, document.getElementById(`applyform-area`));

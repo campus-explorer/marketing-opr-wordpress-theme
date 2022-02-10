@@ -1,20 +1,37 @@
-const { render, useState, useEffect } = wp.element;
+import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import NumberFormat from 'react-number-format'
-import {Formik, Field, Form} from 'formik';
+import {Formik, Field, Form, useField} from 'formik';
 import * as Yup from 'yup';
 import Select from 'react-select' //maybe use instead
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 
-/// --> these modules are fgor interacting with Student Hub's GraphQL
+
+/// --> these modules are for interacting with Student Hub's GraphQL
 import {customAlphabet} from 'nanoid'
 import {  
 	gql,
 	useMutation
 } from '@apollo/client';
+/// --> Student Hub needs a unique request ID. We use the customAlphabet function from nanoid to generate this
+
+const getId = customAlphabet(
+  "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+  12
+);
+/* this will be the request's id for Student Hub
+* Apollo/GraphQL set up for Student Hub
+* Student Hub GraphQL needs a Mutation sent as the query in order to add a lead
+*/
+const leadFormSend = gql`
+  mutation leadformsend($leadInput: CreateLeadInput!) {
+	  createLead(lead: $leadInput)
+	}
+`
 
 
 import './form.scss'
-
 
 const customStyles = {
    placeholder: (provided, state) => {
@@ -22,26 +39,6 @@ const customStyles = {
     return { ...provided, color };
   }
  }
-
-/// --> Student Hub needs a unique request ID. We use the customAlphabet function from nanoid to generate this
-
-const getId = customAlphabet(
-  "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
-  12
-);
-
-/// --> this will be the request's id for Student Hub
-const leadId = getId();
-
-/// --> Apollo/GraphQL set up for Student Hub
-
-/// --> Student Hub GraphQL needs a Mutation sent as the query in order to add a lead
-
-const leadFormSend = gql`
-  mutation leadformsend($leadInput: CreateLeadInput!) {
-	  createLead(lead: $leadInput)
-	}
-`
 
 /// --> Phone Number Field Formatter
 
@@ -70,12 +67,12 @@ NumberFormatCustom.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 };
-	
-const renameKeys = (oldProp,newProp,{ [oldProp]: old, ...others }) => ({
-    [newProp]: old,
-    ...others
-})	
-	
+
+/// <--- End Phone Number Field Formatter
+
+
+/*** Google Analtyics Helpers ***/
+/// ---> Decorate URL function for Google Analytics	
 function decorateUrl(urlString) {
   var ga = window[window['GoogleAnalyticsObject']];
   var tracker;
@@ -85,23 +82,9 @@ function decorateUrl(urlString) {
   }
   return urlString;
 }
+/// <--- End Decorate URL function for Google Analytics
 
-/// -->> Helper function to get element position in the document
-function offsetScroll(el, offset=0) {
-    var rect = el.getBoundingClientRect(),
-    scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
-    scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const elTop = rect.top + scrollTop;
-    window.scrollTo({
-		top: (elTop - offset),
-		left: 0,
-		behavior: 'smooth'
-	})
-}
-
-
-
-/// -->> Persistent Param Cookie Reader
+/// ---> Persistent Param Cookie Reader
 function getPersistCookie(cname) {
   var name = cname + "=";
   var decodedCookie = decodeURIComponent(document.cookie);
@@ -119,8 +102,77 @@ function getPersistCookie(cname) {
   }
   return "";
 }
-//// Landing Page form refresh not using current state in React Select and Formik
-/// Does Formik Initial values need to refresh, or is it React Select that is not rehydrating after render
+/// <--- End Persistent Param Cookie Reader
+
+
+
+/// ---> Helper function to get element position in the document
+function offsetScroll(el, offset=0) {
+    var rect = el.getBoundingClientRect(),
+    scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+    scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const elTop = rect.top + scrollTop;
+    window.scrollTo({
+		top: (elTop - offset),
+		left: 0,
+		behavior: 'smooth'
+	})
+}
+/// <--- End Helper function to get element position in the document
+
+
+/// ---> Select field for form with validation
+function SelectInput({ label, ...props }) {
+  const [field, meta, { setValue, setTouched }] = useField(props);
+  const onChange = ({ value }) => {
+    setValue(value);
+  };
+  return (
+
+      <Select
+		id={`programCode-${props.cid}`}
+		key={`selected-${props.programCode}`}
+		className="program-select"
+		
+		aria-labelledby={`programs-label-${props.cid}`}
+		placeholder = "Select Program..."
+		options={props.options}
+		menuShouldScrollIntoView={true}
+		onFocus={()=>{
+			(props.cid!=='modal-form')&&
+			offsetScroll(document.querySelector(`#${props.formFocus}`),60);
+			
+		}}
+		onChange={onChange}
+        onBlur={setTouched}
+		styles={customStyles}
+		>									        
+    </Select>
+    )
+}
+/// <--- End Select field for form with validation
+
+/// -->> Define validation schema
+
+const phoneRegExp = /^\((?=(\d))(?=[2-9])(?!\1{3})(?!\d11)[\d]{3}\) [\d]{3}-[\d]{4}$/;
+const validateSchema = Yup.object().shape( 
+	{
+		email: Yup.string()
+			.email()
+			.required( 'We will need a valid email address' ),
+		firstName: Yup.string()
+			.required( "We'll need your first name" ),
+		lastName: Yup.string()
+			.required( "We'll need your last name" ),
+		phoneNumber: Yup.string()
+			.required( "We'll need your phone number" )
+			.matches( phoneRegExp, "A valid phone number is needed" ),
+		programCode: Yup.string()
+            .required("Let us know what program you are interested in")
+            .nullable(),
+          
+    })
+  
 
 /// --> Begin the function to build the form
 	
@@ -129,31 +181,32 @@ export default function FormPanel(props){
 		midpoint, 
 		origin, 
 		redirect,
-		programFocus,
 		formtype,
 		formFocus,
+		programFocus,
 		programSelect,
 		programList,
 		clientPrefix,
 		campusCode,
+		collegeCode,
+		campusToggle, //boolean
 		partnerCode,
 		clientCTPA,
 		defaultPhone,
 		cid,
 		dataType
 		} = props;
-		console.log(programList,'form');
-		console.log(programFocus,'form');
+
+
 	const searchVars = {};
 	const location = window.location;
 	
-/// --> detect testing flags in url. and set test values as needed 
-	const testLead=(location.search.search('testform')>=0)?true:false;
-	const testRedirect = (location.search.search('redirect')>=0)?true:false;
+/// !!! TODO: make test flag detection a function outside the main render !!!///
 	
-	//(searchVars.testform)?true:false;
-
-	const testDirect = (testLead && testRedirect)?true:false;  //only set to true if testform flag is present
+/// --> detect testing flags in url. and set test values as needed 
+	const isTestLead = (location.search.search('testform')>=0)?true:false;
+	const TestLeadSignal=()=>(isTestLead)?<span>TESTING MODE</span>:false;
+	const doTestRedirect = (isTestLead && location.search.search('redirect')>=0)?true:false;
 	
 /// -->> check for utm_source in query. if not there, set to null	
 	const urlParams = (location.search.search('utm_source')>=0)?location.search:null;
@@ -167,15 +220,17 @@ export default function FormPanel(props){
 			searchVars[item[0]]=decodeURIComponent(item[1]).toUpperCase();
 		}
 	}
-///serialize search vars string for use in urls	
+	
+/// ---> serialize search vars string for use in urls	
 	let searchString = Object.entries(searchVars).map(([key, val]) => `${key}=${encodeURIComponent(val)}`).join('&');
 	
 
 
+/// ---> Creates Mutation of submitted data for Student Hub
 
 	const [createLead, { data }] = useMutation(leadFormSend);
 
-	
+/// ---> Set default states	
 	const [state, setState] = React.useReducer(
 	    (state, newState) => ({...state, ...newState}),
 	    {formData:{
@@ -183,7 +238,6 @@ export default function FormPanel(props){
 			lastName:'',
 			email:'',
 			phoneNumber:'',
-			//programCode:'',
 			location:props.location,
 			},
 		submitted:false,
@@ -192,50 +246,36 @@ export default function FormPanel(props){
 	  )
 
 	const inputLabel = React.useRef(null);
-	
-	const [programCode, setProgramCode] = useState(programFocus); 
+	const [campusLocation, setCampusLocation] = useState(campusCode);
+	const [programCode, setProgramCode] = useState(programSelect); ///state for only the program code string for Student Hub and the index of ProgramList
+	const [programObj, setProgramObj] = useState();///state for the program object for react-select
 
 /// -->> this refreshes the state when the programSelect prop changes. 
 	useEffect(() => {
 	      setProgramCode(programSelect);
 	  }, [programSelect])
+	  
+	 
 	  	 
 
 /// --> build program list for the select form element. this has to be an array of objects
-let initialProgram = {value:'',label:'Select...'};	
-let ProgramsSelectList= [];
-for(const program in programList){
-	let programObj = programList[program];
-	if(programObj.value===programFocus){
-		initialProgram = programObj;
-	}
-	
-	ProgramsSelectList.push(programList[program])
-}
-/// -->> Define validation schema
-
-//// -->> Need validation of react-select 
-
-const phoneRegExp = /^\(?([2-9][0-9]{2})\)?[-. ]?([1-9][0-9]{2})[-. ]?([0-9]{4})$/;
-const validateSchema = Yup.object().shape({
-	                  email: Yup.string()
-	                    .email()
-	                    .required('We will need a valid email address'),
-	                  firstName: Yup.string()
-	                    .required("We'll need your first name"),
-	                  lastName: Yup.string()
-	                    .required("We'll need your last name"),	                
-	                  phoneNumber: Yup.string()
-	                  	.required("We'll need your phone number")
-						.matches(phoneRegExp,"A valid phone number is needed")
-	                  
-	                })		
+/// !!! TODO: move this to external function, pass in programList !!!///
+	let ProgramsSelectList= [];
+	for(const program in programList){
+		const programOption = {
+			label:programList[program]['label'],
+			value: program
+			}
+		ProgramsSelectList.push(programOption)///push each object into the Select List for react-select... {value, label}
+	}        
+    		
 	return(
 
 		<section className="formPanel" data-version={props.formversion}>
 		      <span className="spacer" id="leadform"/>
 		      <div className={['formBox'].join(' ')}>
-		        {testLead && (<span>TEST LEAD</span>)}
+		      	<TestLeadSignal/>
+		        
 
 		        <div className={["successContainer",state.submitted?'':'hide'].join(' ')}>
 					<h3>Thank you for your request.</h3>
@@ -248,63 +288,77 @@ const validateSchema = Yup.object().shape({
 				 		firstName: '',
 				 		lastName:'', 
 				 		phoneNumber: '', 
-				 		programCode:{programCode},
-				 		programs:'',
-				 		request:false,
+				 		programCode:programCode,
 				 		isSingle:props.isSingle||false
 				 		}}
-	                onSubmit={(values, { setSubmitting}) => {
-
-
-////// ---- BEING SUBMISSION FUNCTION ---- //////	
-/// *** Move to external function ***///					
+/// !!! TODO: move Submit function out of export
+				 		
+	                onSubmit={(values, {setSubmitting})=>{						
 						/** while sumbmitting and waiting for a repsonse, show spinner
 						on response, if success, redirect to viewdo, else show thankyou message */
-												
+							
+									
 						setState({request:true})
-						
-						
-/// --> Set dataLayer value based on form
-						const dataLayerType = (formFocus==='applyForm')?'Start Application Button Click':'Request Info Button Click';
 
-/// -->> Set the dataLayer for the button click event						
-						if(values.request!==true && typeof window != 'undefined'){
-							window.dataLayer.push({event:dataLayerType})
+						const leadId=getId();
+						if(!isTestLead){
+						
+						/// --> Set dataLayer value based on form
+							const dataLayerType = (formFocus==='applyForm')?'Start Application Button Click':'Request Info Button Click';
+						
+						/// -->> Set the dataLayer for the button click event						
+							if(values.request!==true && typeof window != 'undefined'){
+								window.dataLayer.push({event:dataLayerType})
+							}
 						}
 						
 						const sourceCode = searchVars.utm_source||'UNKNOWN';
-						//cleanse phone number of non-numeric characters .replace(/\D/g,'')
-						const body = {
-						'captureUrl': location.href,
-						'leadId': leadId,
-						'partnerCode':partnerCode, /// Need to be variable
-						'collegeCode': clientPrefix, /// Need to be variable
-						'campusCode': campusCode, /// Need to be variable
-						'sourceCode': sourceCode,
-						'programCode': programCode||clientPrefix+'_UNDERGRAD_UNDECIDED', /// Need to be variable
-						'phoneNumberCountry': 'US',
-						'formType': origin,
-						'email': values.email,
-						'phoneNumber': values.phoneNumber,
-						'firstName': values.firstName,
-						'lastName': values.lastName,
-						'deviceType': searchVars.utm_device||'UNKNOWN',
-						"isTestLead": testLead,
-						'sourceTracking': {
-							'campaignName': searchVars.utm_campaign||undefined,
-							'adGroupId': searchVars.utm_adgroup||undefined,
-							'keyword': searchVars.utm_term||undefined,
-							'matchType': searchVars.matchtype||undefined,
-							'network': searchVars.network||undefined,
-							'creativeId': searchVars.creative||undefined,
-							'placement': searchVars.placement||undefined,
-							'target': searchVars.target||undefined,
-							'feedItemId': searchVars.feeditemid||undefined,
-							'agencyTrackingCode':  searchVars.agencytrackingcode||undefined,
-							'adGroupId': searchVars.adgroup_id||undefined
+						
+						// create campus and product codes from selected value
+						const campusProgramCodes = values.programCode.split('--');
+						let finalProgramCode = values.programCode
+						let finalCampusCode = campusCode
+						if(campusProgramCodes.length>1){
+							//console.log('array')
+							finalProgramCode = campusProgramCodes[1];
+							finalCampusCode = campusProgramCodes[0]
+							
 						}
+						
+											
+						const body = {
+							'captureUrl': location.href,
+							'leadId': leadId,
+							'partnerCode':partnerCode, /// Need to be variable
+							'collegeCode': collegeCode, /// Need to be variable
+							'campusCode': finalCampusCode, /// Need to be variable
+							'sourceCode': sourceCode,
+							'programCode': finalProgramCode, /// Need to be variable
+							'phoneNumberCountry': 'US',
+							'formType': origin,
+							'email': values.email,
+							'phoneNumber': values.phoneNumber,
+							'firstName': values.firstName,
+							'lastName': values.lastName,
+							'deviceType': searchVars.utm_device||'UNKNOWN',
+							'isTestLead': isTestLead,
+							'sourceTracking': {
+								'campaignName': searchVars.utm_campaign||undefined,
+								'adGroupId': searchVars.utm_adgroup||undefined,
+								'keyword': searchVars.utm_term||undefined,
+								'matchType': searchVars.matchtype||undefined,
+								'network': searchVars.network||undefined,
+								'creativeId': searchVars.creative||undefined,
+								'placement': searchVars.placement||undefined,
+								'target': searchVars.target||undefined,
+								'feedItemId': searchVars.feeditemid||undefined,
+								'agencyTrackingCode':  searchVars.agencytrackingcode||undefined,
+								'adGroupId': searchVars.adgroup_id||undefined
+							}
 						};
-
+						
+						if(isTestLead) console.log(body,'form');
+					
 						let crmData = (formtype=="crm")?[
 								"firstname="+encodeURIComponent(values.firstName),
 								"lastname="+encodeURIComponent(values.lastName),
@@ -319,27 +373,21 @@ const validateSchema = Yup.object().shape({
 								
 							]:'';
 							
- /// -->> Google CrossDomain Tracking for handoff to redirect
- /// -->> Add these query parameters to any links that point to a separate tracked domain
+						/// -->> Google CrossDomain Tracking for handoff to redirect
+						/// -->> Add these query parameters to any links that point to a separate tracked domain
 						let crossDomainTrackingParams='';
 						var _hsq = window._hsq = window._hsq || [];
 						_hsq.push(['addIdentityListener', function(hstc, hssc, hsfp) {
-							
-
-						    crossDomainTrackingParams = '&__hstc=' + hstc + '&__hssc=' + hssc + '&__hsfp=' + hsfp;
+						   crossDomainTrackingParams = '&__hstc=' + hstc + '&__hssc=' + hssc + '&__hsfp=' + hsfp;
 						}]);	
-						
-/// -->> Set Redirect url if redirect prop is true
+						/// -->> Set Redirect url if redirect prop is true
 						let redirectTarget = (redirect)?decorateUrl(redirect+crmData.join('&')+crossDomainTrackingParams):null;
 						
+						/// -->> if you want to test with no redirect...
+						if(!doTestRedirect && isTestLead)redirectTarget=null;
 						
-/// -->> if you want to test with no redirect...
-						if(!testDirect && testLead){
-							redirectTarget=null;
-						}
-						
-/// -->> Create Lead via apollo UseMutuation hook
-
+						/// -->> Create Lead via apollo UseMutuation hook
+					
 						createLead({ variables: {leadInput:body} }).then((response)=>{
 								setSubmitting(false);
 								//put redirect on creatlead:true
@@ -351,7 +399,7 @@ const validateSchema = Yup.object().shape({
 								
 							})
 
-	                }}
+					} }
 	                
 ////// ---- END SUBMISSION FUNCTION ---- //////
 	                
@@ -371,10 +419,13 @@ const validateSchema = Yup.object().shape({
 	                    handleBlur,
 	                    handleSubmit,
 	                    setFieldValue,
-	                    programs,
-	                    programCode
+	                    programs
 	                  } = props;
-	                  	console.log(programCode, 'process')                  
+
+/// -->> Update ProgramObj state with selected Program List object at corresponding programCode index
+	                  	setProgramObj(programList[programCode])
+	                  	if(programCode)cookies.set('aeoprSelectedProgram', programCode, {path:'/'})  
+	                  	          
 	                 return(
 						<>
 							<div className={["form_overlay",isSubmitting===true?'':'hide'].join(' ')}>
@@ -388,6 +439,7 @@ const validateSchema = Yup.object().shape({
 		                    	className={[state.submitted?'hide':'', isSubmitting===true?'submitting':''].join(' ')}
 		                    	id={formFocus}>
 		                    	<div className="form-body">
+									
 									<div className="form-group"> 
 							            <div 
 							           
@@ -404,38 +456,18 @@ const validateSchema = Yup.object().shape({
 												Select a Program
 												
 									        </label>
-									        <Select
-												id={`programCode-${cid}`}
-												className="program-select"
-												name="programCode"
-												aria-labelledby={`programs-label-${cid}`}
-												value={programCode}
-												defaultValue={initialProgram}
-												options={ProgramsSelectList}
-												//menuPlacement="auto"
-												menuShouldScrollIntoView={true}
-												onFocus={()=>{
-													//(window.innerWidth< 1024)&&
-													(cid!=='modal-form')&&
-													offsetScroll(document.querySelector(`#${formFocus}`),60);
-													
-												}}
-												onChange={selectedOption=>{
-													let event = { target : { name:'programCode',value: selectedOption.value}}
-													setProgramCode(selectedOption.value);
-												  
-													//handleChange(selectedOption);     
-												}}
-												styles={customStyles}
-												>									        
-									        </Select>
+									        <SelectInput 
+									        	name="programCode"
+									        	options={ProgramsSelectList}
+									        	programCode={programCode}
+									        	cid={cid}
+									        	formFocus={formFocus}
+									        />
+									        
 									        {
 										        (errors.programCode && touched.programCode) && 
 										        (<div className="errortext">{errors.programCode}</div>)
-										     }
-
-							            	
-									       									       
+										     }									       									       
 									    </div>
 						            </div>
 						            <div className="form-group">
@@ -495,8 +527,10 @@ const validateSchema = Yup.object().shape({
 											aria-labelledby={`phoneNumber-${cid}`}
 											type="tel"
 											value={values.phoneNumber} 
-											onChange={																
+											onChange={
+																										
 												handleChange('phoneNumber')
+												
 											}
 											onBlur={handleBlur}											
 											format="(###) ###-####" mask="_"
@@ -517,7 +551,13 @@ const validateSchema = Yup.object().shape({
 											fullWidth
 											variant="contained"
 											color="primary"
-											className={['aeopr-button','aeopr-primary-button','aeopr-send-button', props.buttonClass].join(' ')}
+											className={
+												[
+												'aeopr-button',
+												'aeopr-primary-button',
+												'aeopr-send-button', 
+												props.buttonClass].join(' ')
+												}
 										
 										>
 											Request Info

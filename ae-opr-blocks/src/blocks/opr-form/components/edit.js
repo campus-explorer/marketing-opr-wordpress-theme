@@ -54,7 +54,8 @@ class AEOPRForm extends Component {
 		const { attributes, setAttributes } = this.props
 		const {
 			redirect,
-			program_focus
+			program_focus,
+			button_label
 		} = attributes		
 
 		return (
@@ -72,6 +73,12 @@ class AEOPRForm extends Component {
 				        value={ program_focus}
 				        type="text"
 				        onChange={ ( value) => setAttributes( { program_focus: value } ) }
+				    />
+				    <InputControl
+				        label="Button Text"
+				        value={ button_label}
+				        type="text"
+				        onChange={ ( value) => setAttributes( { button_label: value } ) }
 				    />
 						
 					</PanelBody>

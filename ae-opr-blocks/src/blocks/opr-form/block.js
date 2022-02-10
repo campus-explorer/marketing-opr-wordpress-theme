@@ -31,6 +31,10 @@ registerBlockType( "aeopr/rfi-form", {
 		label: {
 			type:"string",
 		},
+		button_label: {
+			type:"string",
+			default: "Request Info"	
+		},
 		redirect:{
 			type:"string",
 			default: aeopr_settings.redirect
@@ -48,7 +52,8 @@ registerBlockType( "aeopr/rfi-form", {
 			label,
 			block_id,
 			redirect,
-			program_focus
+			program_focus,
+			button_label
 		} = attributes
 		
 	
@@ -63,6 +68,7 @@ registerBlockType( "aeopr/rfi-form", {
 					data-has-form="1" 
 					data-redirect={redirect}
 					data-program-focus={program_focus}
+					data-button-label={button_label}
 			/>
 		)
 	},

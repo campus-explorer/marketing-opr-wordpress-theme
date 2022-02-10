@@ -1,6 +1,6 @@
 {
   "name": "ae-wp-blocks",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Wordpress Custom Archer Blocks",
   "main": "index.js",
   "scripts": {

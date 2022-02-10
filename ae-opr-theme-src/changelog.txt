@@ -15,3 +15,13 @@ Version 1.2.3 Jul 08, 2021
 	
 - AEOPR Blocks
 	- add classes for SEO tracking to program grid blocks (ae-opr-blocks/src/blocks/programs-grid/index.php)
+	
+Form Version 2.0.2 Aug 18,2021
+- Update react-select value to pull in preset program code from DOM
+- Add cookie to track selected program from LP form to Apply Now
+
+Form Version 2.2.6 Jan 4 2022
+- Fix select validation (non-null)
+- Fix state clearing on select of option in select element
+- Add phone number area code validation regex
+- pull useState/useEffect from react instead of wp-element (decouple from wordpress wrapper)

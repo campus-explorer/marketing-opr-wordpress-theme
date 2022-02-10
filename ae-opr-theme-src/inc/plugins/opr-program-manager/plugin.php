@@ -140,18 +140,27 @@ function aeopr_program_sortable_columns( $columns ) {
 }
 
 
-//Expose meta to GraphQL
-/*
-add_action( 'graphql_register_types', function() {
-  register_graphql_field( 'Program', 'programCode', [
-     'type' => 'String',
-     'description' => __( 'Program Codes', 'wp-graphql' ),
-     'resolve' => function( $post ) {
-       $programCode = get_post_meta( $post->ID, 'programCode', true );
-       return ! empty( $programCode ) ? $programCode : '';
-     }
-  ] );
-} );*/
+///fill short name with post title if empty
+
+add_action('acf/save_post', 'aeopr_copy_title_to_field', 20);
+function aeopr_copy_title_to_field($post_id) {
+  $value = get_field('program_shortName', $post_id);
+  if (!$value) {
+    $value = get_the_title($post_id);
+    update_field('program_shortName', $value, $post_id);
+  }
+}
+
+add_filter('acf/prepare_field/name=program_campus_code', 'aeopr_set_campus_code', 20);
+function aeopr_set_campus_code($field) {
+  
+  if (!$field['value']) {
+    $value = get_option('opr_brand_settings_campus_code'); /// pull global campus code as default
+	$field['value']= $value;
+  }
+  return $field;
+}
+
 
 
 
