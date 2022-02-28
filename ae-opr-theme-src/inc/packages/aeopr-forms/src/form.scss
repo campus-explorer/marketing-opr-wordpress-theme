@@ -22,6 +22,10 @@
 			&.submitting{
 				filter:blur(4px);
 			}
+			
+			.errortext{
+				color:#df0d0d;
+			}
 		}
 		.form-group{
 			margin: .8rem 0 0;
