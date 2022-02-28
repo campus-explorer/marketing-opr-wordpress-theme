@@ -1,6 +1,6 @@
 {
   "name": "aeopr-lead-form",
-  "version": "2.0.1",
+  "version": "2.2.6",
   "description": "React based lead for for AEOPR sites",
   "main": "index.js",
   "author": "Jason Sonderman",
@@ -8,9 +8,8 @@
   "private": false,
   "devDependencies": {
     "@wordpress/scripts": "^12.5.0",
-    "grunt": "^1.3.0",
-    "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-watch": "^1.1.0"
+    "dart-sass": "^1.25.0",
+    "sass-loader": "8.0.2"
   },
   "scripts": {
     "build": "GENERATE_SOURCEMAP=false wp-scripts build",
@@ -26,21 +25,19 @@
   "dependencies": {
     "@apollo/client": "^3.1.3",
     "@apollo/react-hooks": "^4.0.0",
-    "@material-ui/core": "^4.11.0",
     "formik": "^2.1.5",
     "graphql": "^15.5.1",
     "graphql-tag": "^2.12.5",
-    "mini-css-extract-plugin": "0.9.0",
     "nanoid": "^3.1.12",
-    "node-sass": "^4.14.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-mutation-observer": "^1.1.0",
     "react-number-format": "^4.4.4",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-select": "^4.3.0",
-    "sass-loader": "8.0.2",
+    "universal-cookie": "^4.0.4",
     "yup": "^0.29.2"
   }
 }
