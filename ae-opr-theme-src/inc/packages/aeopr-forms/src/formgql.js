@@ -364,14 +364,17 @@ export default function FormPanel(props){
 								"lastname="+encodeURIComponent(values.lastName),
 								"email="+encodeURIComponent(values.email),
 								"phone="+encodeURIComponent(values.phoneNumber),
-								"ocid="+encodeURIComponent(programCode),
+								"ocid="+encodeURIComponent(finalProgramCode),
 								"leadsource="+encodeURIComponent(sourceCode),
 								"captureurl="+encodeURIComponent(location.href),
 								"tcpaconsent="+true,
-								"segment="+encodeURIComponent(programCode),///Legacy parameter
+								"segment="+encodeURIComponent(finalProgramCode),///Legacy parameter
 								searchString		
 								
 							]:'';
+						const results = crmData.filter(element => {
+						  return element !== '';
+						});
 							
 						/// -->> Google CrossDomain Tracking for handoff to redirect
 						/// -->> Add these query parameters to any links that point to a separate tracked domain
@@ -381,7 +384,7 @@ export default function FormPanel(props){
 						   crossDomainTrackingParams = '&__hstc=' + hstc + '&__hssc=' + hssc + '&__hsfp=' + hsfp;
 						}]);	
 						/// -->> Set Redirect url if redirect prop is true
-						let redirectTarget = (redirect)?decorateUrl(redirect+crmData.join('&')+crossDomainTrackingParams):null;
+						let redirectTarget = (redirect)?decorateUrl(redirect+results.join('&')+crossDomainTrackingParams):null;
 						
 						/// -->> if you want to test with no redirect...
 						if(!doTestRedirect && isTestLead)redirectTarget=null;

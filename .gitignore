@@ -1,2 +1,6 @@
 node_modules/
 .DS_Store
+
+.nova/
+
+ae-opr-theme-src/inc/packages/aeopr-forms/build/
